@@ -271,8 +271,8 @@
 				scene : this, x : 100, y : 100, 
 				w : 100, h : 100, useChildIndex : true, 
 				childData : 
-					childData [ child [ 0 ] ] = this.__myArrowLeft, 
-					childData [ child [ 1 ] ] = this.__myArrowRight,  
+					child [ 0 ] : this.__myArrowLeft, 
+					child [ 1 ] : this.__myArrowRight,  
 				}
 			});
 
