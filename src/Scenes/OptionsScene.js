@@ -265,15 +265,13 @@
 				locked : false,
 			});
 
-			this.__childData = { };
-
 			this.__container.create ({
 				scene : this, x : 100, y : 100, 
 				w : 100, h : 100, useChildIndex : true, 
-				childData : 
-					child [ 0 ] : this.__myArrowLeft, 
-					child [ 1 ] : this.__myArrowRight,  
-				}
+				childData : [
+					this.__myArrowLeft, 
+					this.__myArrowRight,  
+				]
 			});
 
 			// this.__container.debug ( this.__container, this.add );

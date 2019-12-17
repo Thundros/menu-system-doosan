@@ -61,6 +61,7 @@
 				this.__childIndex = this.__childData.index;
 
 				console.error ( this.__child );
+
 				// console.error ( this.__childIndex );
 
 			}
@@ -87,7 +88,7 @@
 
 			}
 
-			if ( this.__objData.useChildIndex === true ) {
+			if ( this.__useChildIndex === true ) {
 
 				this.__container.addAt (
 					this.__child, 
