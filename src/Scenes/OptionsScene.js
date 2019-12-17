@@ -197,6 +197,9 @@
 				}
 			);
 
+			console.error ( this.__myArrowLeft );
+			console.error ( this.__myArrowRight );
+
 			/*
 
 				// this.__graphics = this.add.graphics ( );
@@ -264,6 +267,9 @@
 				targetScene : 'TitleScene',
 				locked : false,
 			});
+
+			console.error ( this.__myArrowLeft );
+			console.error ( this.__myArrowRight );
 
 			this.__container.create ({
 				scene : this, x : 100, y : 100, 

@@ -3,7 +3,7 @@
 
 	({
 
-		Extends : Phaser.GameObjects.Container, 
+		Extends : Phaser.Scene, 
 
 		initialize : 
 
@@ -41,36 +41,7 @@
 			this.__h = this.__objData.h;
 
 			this.__useChildIndex = this.__objData.useChildIndex;
-
-			if ( this.__useChildIndex === true ) {
-				if ( typeof ( this.__childData ) === 'object' ) {
-					if ( this.emptyObject ( this.__childData ) ) {
-						return console.error (
-							'\r\n' + 
-								'CHILD DATA DOES NOT EXIST!' + '\r\n' + 
-								'PLEASE ADD CHILD DATA & TRY AGAIN!' + 
-							'\r\n\r\n'
-						);
-					}
-				}
-			}
-
-			if ( this.__useChildIndex === true ) {
-
-				this.__child = this.__childData.children;
-				this.__childIndex = this.__childData.index;
-
-				console.error ( this.__child );
-
-				// console.error ( this.__childIndex );
-
-			}
-
-			this.__useScrollFactor = this.__objData.useScrollFactor;
-			this.__setNonExclusive = this.__objData.setNonExclusive;
-			this.__setInteractive = this.__objData.setInteractive;
-			this.__interactiveGeometry = this.__objData.intGeom;
-			this.__contains = this.__objData.contains;
+			this.__childDataCount = ( this.__childData.length );
 
 			this.__container = this.__scene.add.container (
 				this.__x, 
@@ -82,20 +53,39 @@
 				this.__h
 			);
 
-			if ( this.__objData.useChildIndex === false ) {
+			this.__children = [ ];
+			this.__childIndex = [ ];
 
-				this.__container.add ( this.__child );
-
+			for ( this.__i = 0; this.__i < this.__childDataCount; this.__i++ ) {
+				if ( this.__useChildIndex === true ) {
+					this.__children [ this.__i ] = this.__childData [ this.__i ];
+					this.__childIndex [ this.__i ] = this.__i;
+					if ( typeof ( this.__children [ this.__i ] ) === 'object' ) {
+						if ( this.emptyObject ( this.__children [ this.__i ] ) ) {
+							if ( this.__objData.useChildIndex === false ) {
+								console.log ( this.__children [ this.__i ] );
+								this.__container.add ( this.__children [ this.__i ] );
+							}
+							this.__container.addAt (
+								console.log ( this.__children [ this.__i ] ), 
+								console.log ( this.__childIndex [ this.__i ] )
+							);
+							return console.error (
+								'\r\n' + 
+									'CHILD DATA DOES NOT EXIST!' + '\r\n' + 
+									'PLEASE ADD CHILD DATA & TRY AGAIN!' + 
+								'\r\n\r\n'
+							);
+						}
+					}
+				}
 			}
 
-			if ( this.__useChildIndex === true ) {
-
-				this.__container.addAt (
-					this.__child, 
-					this.__childIndex
-				);
-
-			}
+			this.__useScrollFactor = this.__objData.useScrollFactor;
+			this.__setNonExclusive = this.__objData.setNonExclusive;
+			this.__setInteractive = this.__objData.setInteractive;
+			this.__interactiveGeometry = this.__objData.intGeom;
+			this.__contains = this.__objData.contains;
 
 			if ( this.__useScrollFactor === true ) {
 
