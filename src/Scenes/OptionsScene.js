@@ -323,10 +323,7 @@
 
 			this.updateAudio ( );
 
-			this.__optionsPageCount = 0;
-
 		},
-
 
 	});
 
