@@ -34,11 +34,7 @@
 				this.__model1.musicOn = false;
 
 				this.__sound1 = this.sound.add ( this.__soundID, this.__soundData );
-
-				console.error ( this.__model1 );
-				console.error ( this.__sound1 );
-				console.error ( this.__soundID );
-				console.error ( this.__soundData );
+				this.sound.pauseOnBlur = false;
 
 				this.sys.game.globals.sound.stop ( );
 				this.__sound1.play ( );
@@ -97,11 +93,6 @@
 				},
 
 			];
-
-			console.error ( this.__soundTrack [ 0 ] );
-			console.error ( this.__soundData [ 0 ] );
-			console.error ( this.__soundTrack [ 1 ] );
-			console.error ( this.__soundData [ 1 ] );
 
 			this.createAudio({
 				soundID : this.__soundTrack [ 1 ],
