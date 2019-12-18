@@ -180,8 +180,8 @@
 			*/
 
 			this.__myArrowLeft = this.add.text (
-				( ( this.__halfLeft ) - ( 150 / 2 ) ), 
-				( ( this.__arrowLeftY [ 0 ] ) ), 
+				( 0 ), 
+				( 0 ), 
 				this.__textArray [ 0 ], 
 				{
 					fontSize : 150, 
@@ -189,8 +189,8 @@
 			);
 
 			this.__myArrowRight = this.add.text (
-				( ( this.__halfRight ) - ( 150 / 2 ) ), 
-				( ( this.__arrowRightY [ 0 ] ) ), 
+				( 0 ), 
+				( 0 ), 
 				this.__textArray [ 1 ], 
 				{
 					fontSize : 150, 
@@ -272,15 +272,18 @@
 			console.error ( this.__myArrowRight );
 
 			this.__container.create ({
-				scene : this, x : 100, y : 100, 
-				w : 100, h : 100, useChildIndex : true, 
-				childData : [
-					this.__myArrowLeft, 
-					this.__myArrowRight,  
-				]
+				scene : this, x : 0, y : 0, 
+				w : 100, h : 100, useChildIndex : false, 
 			});
 
-			// this.__container.debug ( this.__container, this.add );
+			this.__container.debug ({
+				container : this.__container, 
+				add : this.add, 
+				x : this.__container.x, 
+				y : this.__container.y, 
+				w : this.__container.w, 
+				h : this.__container.h, 
+			});
 
 			this.updateAudio ( );
 

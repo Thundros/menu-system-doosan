@@ -35,47 +35,67 @@
 			this.__childData = this.__objData.childData;
 
 			this.__scene = this.__objData.scene;
-			this.__x = this.__objData.x;
-			this.__y = this.__objData.y;
-			this.__w = this.__objData.w;
-			this.__h = this.__objData.h;
+			this.x = this.__objData.x;
+			this.y = this.__objData.y;
+			this.w = this.__objData.w;
+			this.h = this.__objData.h;
 
 			this.__useChildIndex = this.__objData.useChildIndex;
-			this.__childDataCount = ( this.__childData.length );
+
+			if ( typeof ( this.__childData ) !== 'undefined' ) {
+				this.__childDataCount = ( this.__childData.length );
+			}
+
+			if ( typeof ( this.__childData ) !== 'undefined' ) {
+				this.__childDataCount = 1;
+			}
 
 			this.__container = this.__scene.add.container (
-				this.__x, 
-				this.__y
+				this.x, 
+				this.y
 			);
 
 			this.__container.setSize (
-				this.__w, 
-				this.__h
+				this.w, 
+				this.h
 			);
 
 			this.__children = [ ];
 			this.__childIndex = [ ];
 
+			// For each Child
 			for ( this.__i = 0; this.__i < this.__childDataCount; this.__i++ ) {
+				// If `use Child index` is `true`
 				if ( this.__useChildIndex === true ) {
+					// Set `this.__children [ ... ]` to 
+					// `this.__childData [ this.__i ]`
 					this.__children [ this.__i ] = this.__childData [ this.__i ];
+					// Set the `Child` index
 					this.__childIndex [ this.__i ] = this.__i;
+					// If `this.__children [ this.__i ]`'s type 
+					// is an object
 					if ( typeof ( this.__children [ this.__i ] ) === 'object' ) {
-						if ( this.emptyObject ( this.__children [ this.__i ] ) ) {
+						// If that `object is `NOT` `empty`
+						if ( this.emptyObject ( this.__children [ this.__i ] ) === false ) {
+							// If `NOT` using a `Child index`
 							if ( this.__objData.useChildIndex === false ) {
-								console.log ( this.__children [ this.__i ] );
+								// Log A
+								console.log ( 'A' );
+								// Add the `children` 
+								// to `container`
 								this.__container.add ( this.__children [ this.__i ] );
 							}
-							this.__container.addAt (
-								console.log ( this.__children [ this.__i ] ), 
-								console.log ( this.__childIndex [ this.__i ] )
-							);
-							return console.error (
-								'\r\n' + 
-									'CHILD DATA DOES NOT EXIST!' + '\r\n' + 
-									'PLEASE ADD CHILD DATA & TRY AGAIN!' + 
-								'\r\n\r\n'
-							);
+							// `IF` using a `Child index`
+							if ( this.__objData.useChildIndex === true ) {
+								// Log B
+								console.log ( 'B' );
+								// Set the `Child` to 
+								// `index [ i ]`
+								this.__container.addAt (
+									this.__children [ this.__i ], 
+									this.__childIndex [ this.__i ]
+								);
+							}
 						}
 					}
 				}
@@ -212,10 +232,17 @@
 
 		}, 
 
-		debug : function ( container, add ) {
+		debug : function ( __objData ) {
 
-			this.__container = container;
-			this.__add = add;
+			this.__objData = __objData;
+
+			this.__container = this.__objData.container;
+			this.__add = this.__objData.add;
+
+			this.__x = this.__objData.x;
+			this.__y = this.__objData.y;
+			this.__w = this.__objData.w;
+			this.__h = this.__objData.h;
 
 			this.__half = ( this.__CONFIG_WIDTH / 2 );
 			this.__quarter = ( this.__half / 2 );
@@ -223,15 +250,27 @@
 			this.__halfLeft = ( this.__half - this.__quarter );
 			this.__halfRight = ( this.__half + this.__quarter );
 
+			console.error ( this.__x );
+			console.error ( this.__y );
+			console.error ( this.__w );
+			console.error ( this.__h );
+
 			if ( this.__container ) {
 
-				this.__add.rectangle (
-					( this.__container.x ), 
-					( this.__container.y ), 
-					( this.__container.width ), 
-					( this.__container.height ), 
-					( 0xffffff )
-				).setOrigin ( 0, 0 );
+				this.__rect = (
+					this.__add.rectangle (
+						( this.__x ), 
+						( this.__y ), 
+						( this.__w ), 
+						( this.__h ), 
+					)
+				);
+
+				this.__color = this.__rect.strokeColor;
+
+				this.__rect.setStrokeStyle (
+					2, 0x0064DD, 1.0
+				);
 
 			}
 

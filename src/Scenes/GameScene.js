@@ -42,8 +42,8 @@
 
 				this.sys.game.globals.sound.stop ( );
 				this.__sound1.play ( );
-				this.model1.bgMusicPlaying = true;
-				this.sys.game.globals.sound = this.sound1;
+				this.__model1.bgMusicPlaying = true;
+				this.sys.game.globals.sound = this.__sound1;
 
 			}
 
