@@ -33,13 +33,12 @@
 
 				this.__model1.musicOn = false;
 
-				this.__sound1 = this.sound.add ( this.__soundID, this.__soundData );
-				this.sound.pauseOnBlur = false;
+				this.__sound = this.sound.add ( this.__soundID, this.__soundData );
 
 				this.sys.game.globals.sound.stop ( );
-				this.__sound1.play ( );
+				this.__sound.play ( );
 				this.__model1.bgMusicPlaying = true;
-				this.sys.game.globals.sound = this.__sound1;
+				this.sys.game.globals.sound = this.__sound;
 
 			}
 

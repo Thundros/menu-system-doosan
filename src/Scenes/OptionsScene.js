@@ -70,13 +70,27 @@
 			this.__WINDOW_HALF_WIDTH = ( this.__WINDOW_WIDTH / 2 );
 			this.__WINDOW_HALF_HEIGHT = ( this.__WINDOW_HEIGHT / 2 );
 
+            // "150 is the size of the font, 50 is the offset"
+            // "the font size is 150 i vaguely recall"
+            //this.add.rectangle((this.__CONFIG_WIDTH/2),0, 1, 2000, 0xffffff).setOrigin(0,0); // half the screen
+
+            this.__half = ( this.__CONFIG_WIDTH / 2 );
+            this.__quarter = ( this.__half / 2 );
+
+            this.__halfLeft = ( this.__half - this.__quarter );
+            this.__halfRight = ( this.__half + this.__quarter );
+
+            this.add.rectangle ( ( this.__halfLeft - ( 150 / 2 ) ), 0, 1, 2000, 0xffffff ).setOrigin ( 0, 0 ); // half the screen
+            this.add.rectangle ( ( this.__half ), 0, 1, 2000, 0xffffff ).setOrigin ( 0, 0 ); // half the screen
+            this.add.rectangle ( ( this.__halfRight + ( 150 / 2 ) ), 0, 1, 2000, 0xffffff ).setOrigin ( 0, 0 ); // half the screen
+
 			this.__textArray = [
 				'<', '>', 'Options',
 				'Sound Enabled', 'Music Enabled',
 			];
 
 			this.__musicButtonX = [
-				( ( this.__CONFIG_HALF_WIDTH ) - ( 250 / 2 ) ),
+				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 48 ) ),
 			];
 
 			this.__musicButtonY = [
@@ -84,7 +98,7 @@
 			];
 
 			this.__soundButtonX = [
-				( ( this.__CONFIG_HALF_WIDTH ) - ( 250 / 2 ) ),
+				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 48 ) ),
 			];
 
 			this.__soundButtonY = [
@@ -92,7 +106,7 @@
 			];
 
 			this.__optionTitleX = [
-				( ( this.__CONFIG_HALF_WIDTH ) - ( 165 / 2 ) ),
+				( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ),
 			];
 
 			this.__optionTitleY = [
@@ -100,7 +114,7 @@
 			];
 
 			this.__musicLabelX = [
-				( ( this.__CONFIG_HALF_WIDTH ) - ( 170 / 2 ) ),
+				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 4 ) ),
 			];
 
 			this.__musicLabelY = [
@@ -108,7 +122,7 @@
 			];
 
 			this.__soundLabelX = [
-				( ( this.__CONFIG_HALF_WIDTH ) - ( 170 / 2 ) ),
+				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 4 ) ),
 			];
 
 			this.__soundLabelY = [
@@ -116,7 +130,7 @@
 			];
 
 			this.__arrowLeftX = [
-				( ( this.__CONFIG_HALF_WIDTH / 2 ) - ( 40 ) - ( 50 ) ),
+				( ( ( this.__CONFIG_HALF_WIDTH / 2 ) - ( 150 / 2 ) ) - 5 ),
 			];
 
 			this.__arrowLeftY = [
@@ -124,7 +138,7 @@
 			];
 
 			this.__arrowRightX = [
-				( ( this.__CONFIG_WIDTH / 2 ) + ( 40 ) + ( 50 ) ),
+				( ( this.__halfRight + ( 150 / 2 ) ) - ( 150 / 2 ) - 9 ), 
 			];
 
 			this.__arrowRightY = [
@@ -152,20 +166,6 @@
 				}
 			);
 
-            // "150 is the size of the font, 50 is the offset"
-            // "the font size is 150 i vaguely recall"
-            //this.add.rectangle((this.__CONFIG_WIDTH/2),0, 1, 2000, 0xffffff).setOrigin(0,0); // half the screen
-
-            this.__half = ( this.__CONFIG_WIDTH / 2 );
-            this.__quarter = ( this.__half / 2 );
-
-            this.__halfLeft = ( this.__half - this.__quarter );
-            this.__halfRight = ( this.__half + this.__quarter );
-
-            this.add.rectangle ( ( this.__halfLeft - ( 150 / 2 ) ), 0, 1, 2000, 0xffffff ).setOrigin ( 0, 0 ); // half the screen
-            this.add.rectangle ( ( this.__half ), 0, 1, 2000, 0xffffff ).setOrigin ( 0, 0 ); // half the screen
-            this.add.rectangle ( ( this.__halfRight + ( 150 / 2 ) ), 0, 1, 2000, 0xffffff ).setOrigin ( 0, 0 ); // half the screen
-
 			/*
 
 				this.add.rectangle ( this.__halfLeft, 0, 1, 2000, 0xffffff ).setOrigin ( 0, 0 );
@@ -180,8 +180,8 @@
 			*/
 
 			this.__myArrowLeft = this.add.text (
-				( 0 ), 
-				( 0 ), 
+				( this.__arrowLeftX [ 0 ] ), 
+				( this.__arrowLeftY [ 0 ] ), 
 				this.__textArray [ 0 ], 
 				{
 					fontSize : 150, 
@@ -189,42 +189,13 @@
 			);
 
 			this.__myArrowRight = this.add.text (
-				( 0 ), 
-				( 0 ), 
+				( this.__arrowRightX [ 0 ] ), 
+				( this.__arrowRightY [ 0 ] ), 
 				this.__textArray [ 1 ], 
 				{
 					fontSize : 150, 
 				}
 			);
-
-			console.error ( this.__myArrowLeft );
-			console.error ( this.__myArrowRight );
-
-			/*
-
-				// this.__graphics = this.add.graphics ( );
-				// this.__graphics.lineStyle ( 2, 0xffff00, 1 );
-				// this.__graphics.strokeRect ( 50, 50, 300, 200 );
-
-				this.__arrowLeft = this.add.text (
-					( this.__arrowLeftX [ 0 ] ), 
-					( this.__arrowLeftY [ 0 ] ), 
-					this.__textArray [ 0 ], 
-					{
-						fontSize : 150, 
-					}
-				);
-
-				this.__arrowRight = this.add.text (
-					( this.__arrowRightX [ 0 ] ), 
-					( this.__arrowRightY [ 0 ] ), 
-					this.__textArray [ 1 ], 
-					{
-						fontSize : 150, 
-					}
-				);
-
-			*/
 
 			this.__musicText = this.add.text (
 				( this.__musicLabelX [ 0 ] ), 
@@ -247,6 +218,9 @@
 			this.__musicButton.setInteractive ( );
 			this.__soundButton.setInteractive ( );
 
+			this.__myArrowLeft.setInteractive ( );
+			this.__myArrowRight.setInteractive ( );
+
 			this.__musicButton.on ( 'pointerdown', function ( ) {
 				this.model.musicOn = ( ! ( this.model.musicOn ) );
 				this.updateAudio ( );
@@ -268,24 +242,33 @@
 				locked : false,
 			});
 
-			console.error ( this.__myArrowLeft );
-			console.error ( this.__myArrowRight );
+			/*
 
-			this.__container.create ({
-				scene : this, x : 0, y : 0, 
-				w : 100, h : 100, useChildIndex : false, 
-			});
+				this.__container.create ({
+					scene : this, x : 0, y : 0, 
+					w : 100, h : 100, useChildIndex : false, 
+				});
 
-			this.__container.debug ({
-				container : this.__container, 
-				add : this.add, 
-				x : this.__container.x, 
-				y : this.__container.y, 
-				w : this.__container.w, 
-				h : this.__container.h, 
-			});
+				this.__container.debug ({
+					container : this.__container, 
+					add : this.add, 
+					x : this.__container.x, 
+					y : this.__container.y, 
+					w : this.__container.w, 
+					h : this.__container.h, 
+				});
+
+			*/
 
 			this.updateAudio ( );
+
+			this.__myArrowLeft.on ( 'pointerdown', function ( ) {
+				this.destroy ( );
+			} );
+
+			this.__myArrowRight.on ( 'pointerdown', function ( ) {
+				this.destroy ( );
+			} );
 
 		},
 
