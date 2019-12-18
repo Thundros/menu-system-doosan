@@ -83,6 +83,13 @@
 	this.__PLAYER_MIN_JUMPSPEED = ( 250 ); // ( Default is `250` )
 	this.__PLAYER_MAX_JUMPSPEED = ( 600 ); // ( Default is `600` )
 
+	// { Options Scene Section }
+
+	this.__OPTIONS_CURR_PAGE_COUNT = 0;
+
+	this.__OPTIONS_MIN_SCENE_COUNT = 0;
+	this.__OPTIONS_MAX_SCENE_COUNT = 2;
+
 	// { Game Configuration }
 
 	this.__config = {

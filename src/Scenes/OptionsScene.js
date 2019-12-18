@@ -51,12 +51,54 @@
 
 		},
 
+		updateAudio : function ( ) {
+
+			console.error ( this.sys.game.globals );
+
+			if ( this.model.musicOn === false ) {
+
+				this.__musicButton.setTexture ( 'box' );
+				this.sys.game.globals.sound.stop ( );
+				this.model.bgMusicPlaying = false;
+
+			}
+
+			else
+
+			{
+
+				this.__musicButton.setTexture ( 'checkedBox' );
+
+				if ( this.model.bgMusicPlaying === false ) {
+
+					this.sys.game.globals.sound.play ( );
+					this.model.bgMusicPlaying = true;
+
+				}
+
+			}
+
+			if ( this.model.soundOn === false ) {
+
+				this.__soundButton.setTexture ( 'box' );
+
+			}
+
+			else
+
+			{
+
+				this.__soundButton.setTexture ( 'checkedBox' );
+
+			}
+
+		}, 
+
 		create : function ( ) {
 
 			this.model = this.sys.game.globals.model;
 
 			this.__container = new Container ( );
-
 
 			this.__CONFIG_WIDTH = ( __config.width );
 			this.__CONFIG_HEIGHT = ( __config.height );
@@ -221,15 +263,6 @@
 			this.__myArrowLeft.setInteractive ( );
 			this.__myArrowRight.setInteractive ( );
 
-			this.__musicButton.on ( 'pointerdown', function ( ) {
-				this.model.musicOn = ( ! ( this.model.musicOn ) );
-				this.updateAudio ( );
-			}.bind ( this ) );
-
-			this.__soundButton.on ( 'pointerdown', function ( ) {
-				this.model.soundOn = ( ! ( this.model.soundOn ) );
-				this.updateAudio ( );
-			}.bind ( this ) );
 
 			this.__menuButton = this.CreateGameButton ({
 				scene : this,
@@ -241,6 +274,34 @@
 				targetScene : 'TitleScene',
 				locked : false,
 			});
+
+			this.__musicButton.on ( 'pointerdown', function ( ) {
+				this.model.musicOn = ( ! ( this.model.musicOn ) );
+				this.updateAudio ( );
+			}.bind ( this ) );
+
+			this.__soundButton.on ( 'pointerdown', function ( ) {
+				this.model.soundOn = ( ! ( this.model.soundOn ) );
+				this.updateAudio ( );
+			}.bind ( this ) );
+
+			this.__myArrowLeft.on ( 'pointerdown', function ( ) {
+				// Where Pagination going backwards works
+				__OPTIONS_CURR_PAGE_COUNT -= 1;
+				if ( __OPTIONS_CURR_PAGE_COUNT < ( __OPTIONS_MIN_SCENE_COUNT ) ) {
+					__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MAX_SCENE_COUNT;
+				}
+				console.error ( __OPTIONS_CURR_PAGE_COUNT );
+			} );
+
+			this.__myArrowRight.on ( 'pointerdown', function ( ) {
+				// Where Pagination going forwards works
+				__OPTIONS_CURR_PAGE_COUNT += 1;
+				if ( __OPTIONS_CURR_PAGE_COUNT > ( __OPTIONS_MAX_SCENE_COUNT ) ) {
+					__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MIN_SCENE_COUNT;
+				}
+				console.error ( __OPTIONS_CURR_PAGE_COUNT );
+			} );
 
 			/*
 
@@ -262,58 +323,10 @@
 
 			this.updateAudio ( );
 
-			this.__myArrowLeft.on ( 'pointerdown', function ( ) {
-				this.destroy ( );
-			} );
-
-			this.__myArrowRight.on ( 'pointerdown', function ( ) {
-				this.destroy ( );
-			} );
+			this.__optionsPageCount = 0;
 
 		},
 
-		updateAudio : function ( ) {
-
-			console.error ( this.sys.game.globals );
-
-			if ( this.model.musicOn === false ) {
-
-				this.__musicButton.setTexture ( 'box' );
-				this.sys.game.globals.sound.stop ( );
-				this.model.bgMusicPlaying = false;
-
-			}
-
-			else
-
-			{
-
-				this.__musicButton.setTexture ( 'checkedBox' );
-
-				if ( this.model.bgMusicPlaying === false ) {
-
-					this.sys.game.globals.sound.play ( );
-					this.model.bgMusicPlaying = true;
-
-				}
-
-			}
-
-			if ( this.model.soundOn === false ) {
-
-				this.__soundButton.setTexture ( 'box' );
-
-			}
-
-			else
-
-			{
-
-				this.__soundButton.setTexture ( 'checkedBox' );
-
-			}
-
-		}
 
 	});
 
