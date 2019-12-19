@@ -128,11 +128,12 @@
 
 			this.__textArray = [
 				'<', '>', 'Options',
-				'Sound Enabled', 'Music Enabled',
+				'Sound Enabled', 'Music Enabled', 
+				'Debug', 
 			];
 
 			this.__musicButtonX = [
-				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 48 ) ),
+				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 48 ) ), 
 			];
 
 			this.__musicButtonY = [
@@ -291,7 +292,8 @@
 				if ( __OPTIONS_CURR_PAGE_COUNT < ( __OPTIONS_MIN_SCENE_COUNT ) ) {
 					__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MAX_SCENE_COUNT;
 				}
-				this.scene.scene.restart ( );
+				this.scene.scene.start ( 'key' + this.__OPTIONS_CURR_PAGE_COUNT );
+				console.log ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
 			} );
 
 			this.__myArrowRight.on ( 'pointerdown', function ( ) {
@@ -300,7 +302,8 @@
 				if ( __OPTIONS_CURR_PAGE_COUNT > ( __OPTIONS_MAX_SCENE_COUNT ) ) {
 					__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MIN_SCENE_COUNT;
 				}
-				this.scene.scene.restart ( );
+				this.scene.scene.start ( 'key' + this.__OPTIONS_CURR_PAGE_COUNT );
+				console.log ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
 			} );
 
 			/*
