@@ -291,7 +291,7 @@
 				if ( __OPTIONS_CURR_PAGE_COUNT < ( __OPTIONS_MIN_SCENE_COUNT ) ) {
 					__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MAX_SCENE_COUNT;
 				}
-				console.error ( __OPTIONS_CURR_PAGE_COUNT );
+				this.scene.restart ( );
 			} );
 
 			this.__myArrowRight.on ( 'pointerdown', function ( ) {
@@ -300,7 +300,7 @@
 				if ( __OPTIONS_CURR_PAGE_COUNT > ( __OPTIONS_MAX_SCENE_COUNT ) ) {
 					__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MIN_SCENE_COUNT;
 				}
-				console.error ( __OPTIONS_CURR_PAGE_COUNT );
+				this.scene.restart ( );
 			} );
 
 			/*
