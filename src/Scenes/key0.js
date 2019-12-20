@@ -18,8 +18,22 @@
 
 		}, 
 		
-		myFunc : function ( ) {
-			console.error ( 'HI FROM KEY0!' );
+		init : function ( ) {
+
+
+
+		}, 
+		
+		create : function ( ) {
+
+			console.error ( 'KEY0' );
+
+		}, 
+
+		update : function ( ) {
+
+
+
 		}, 
 
 	});
