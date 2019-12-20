@@ -289,27 +289,43 @@
 			this.__myArrowLeft.on ( 'pointerdown', function ( ) {
 				// Where Pagination going backwards works
 				__OPTIONS_CURR_PAGE_COUNT -= 1;
-				if ( __OPTIONS_CURR_PAGE_COUNT === __OPTIONS_MIN_SCENE_COUNT ) {
+				if ( __OPTIONS_CURR_PAGE_COUNT === 0 ) {
+					console.error ( 'BLAH 1' );
 					this.scene.scene.start ( 'OptionsScene' );
 				}
 				if ( __OPTIONS_CURR_PAGE_COUNT < ( __OPTIONS_MIN_SCENE_COUNT ) ) {
 					__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MAX_SCENE_COUNT;
+					console.log (
+						'\r\n\r\n' + 
+							'if' + ' ( ' + __OPTIONS_CURR_PAGE_COUNT + ' ' + '<' + ' ' + __OPTIONS_MIN_SCENE_COUNT + ' ' + ')' + ' ' + '{' + '\r\n' + 
+								'\t' + 'this.scene.scene.start' + ' ' + '(' + '\'' + 'key' + __OPTIONS_CURR_PAGE_COUNT + '\'' + ')' + '\r\n' + 
+							'}' + 
+						'\r\n\r\n'
+					);
+					console.log ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
 					this.scene.scene.start ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
 				}
-				console.log ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
 			} );
 
 			this.__myArrowRight.on ( 'pointerdown', function ( ) {
 				// Where Pagination going forwards works
 				__OPTIONS_CURR_PAGE_COUNT += 1;
-				if ( __OPTIONS_CURR_PAGE_COUNT === __OPTIONS_MIN_SCENE_COUNT ) {
+				if ( __OPTIONS_CURR_PAGE_COUNT === 0 ) {
+					console.error ( 'BLAH 2' );
 					this.scene.scene.start ( 'OptionsScene' );
 				}
 				if ( __OPTIONS_CURR_PAGE_COUNT > ( __OPTIONS_MAX_SCENE_COUNT ) ) {
 					__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MIN_SCENE_COUNT;
+					console.log (
+						'\r\n\r\n' + 
+							'if' + ' ( ' + __OPTIONS_CURR_PAGE_COUNT + ' ' + '<' + ' ' + __OPTIONS_MIN_SCENE_COUNT + ' ' + ')' + ' ' + '{' + '\r\n' + 
+								'\t' + 'this.scene.scene.start' + ' ' + '(' + '\'' + 'key' + __OPTIONS_CURR_PAGE_COUNT + '\'' + ')' + '\r\n' + 
+							'}' + 
+						'\r\n\r\n'
+					);
+					console.log ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
 					this.scene.scene.start ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
 				}
-				console.log ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
 			} );
 
 			/*
