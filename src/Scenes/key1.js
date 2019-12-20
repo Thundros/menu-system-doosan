@@ -19,8 +19,11 @@
 		}, 
 		
 		myFunc : function ( ) {
+			console.error ( 'HI FROM KEY1!' );
 		}, 
 
 	});
+
+	this.key1.myFunc ( );
 
 
