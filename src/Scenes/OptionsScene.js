@@ -293,7 +293,7 @@
 					console.error ( 'BLAH 1' );
 					this.scene.scene.start ( 'OptionsScene' );
 				}
-				if ( __OPTIONS_CURR_PAGE_COUNT < ( __OPTIONS_MIN_SCENE_COUNT ) ) {
+				else if ( __OPTIONS_CURR_PAGE_COUNT < ( __OPTIONS_MIN_SCENE_COUNT ) ) {
 					__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MAX_SCENE_COUNT;
 					console.log (
 						'\r\n\r\n' + 
@@ -314,7 +314,7 @@
 					console.error ( 'BLAH 2' );
 					this.scene.scene.start ( 'OptionsScene' );
 				}
-				if ( __OPTIONS_CURR_PAGE_COUNT > ( __OPTIONS_MAX_SCENE_COUNT ) ) {
+				else if ( __OPTIONS_CURR_PAGE_COUNT > ( __OPTIONS_MAX_SCENE_COUNT ) ) {
 					__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MIN_SCENE_COUNT;
 					console.log (
 						'\r\n\r\n' + 
