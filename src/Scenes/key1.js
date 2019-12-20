@@ -249,7 +249,7 @@
 			this.__musicText = this.add.text (
 				( this.__musicLabelX [ 0 ] ), 
 				( this.__musicLabelY [ 0 ] ), 
-				'Option 4 Enabled', 
+				'Sound Enabled', 
 				{
 					fontSize : 24, 
 				}
@@ -258,7 +258,7 @@
 			this.__soundText = this.add.text (
 				( this.__soundLabelX [ 0 ] ), 
 				( this.__soundLabelY [ 0 ] ), 
-				'Option 3 Enabled', 
+				'Music Enabled', 
 				{
 					fontSize : 24, 
 				}

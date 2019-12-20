@@ -35,8 +35,7 @@
 	// { Scenes Section }
 
 	this.__SCENES_ARRAY = [
-		PreGameScene, key0, key1, 
-		key2, 
+		PreGameScene, key1, key2, 
 	];
 
 	// { Game Physics Section }
