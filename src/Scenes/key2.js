@@ -24,6 +24,4 @@
 
 	});
 
-	this.key2.myFunc ( );
-
 
