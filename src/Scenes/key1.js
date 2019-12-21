@@ -295,21 +295,39 @@
 			this.__myArrowLeft.on ( 'pointerdown', function ( ) {
 				// Where Pagination going backwards works
 				__OPTIONS_CURR_PAGE_COUNT -= 1;
-				if ( __OPTIONS_CURR_PAGE_COUNT < ( __OPTIONS_MIN_SCENE_COUNT ) ) {
-					__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MAX_SCENE_COUNT;
+				console.log ( '__OPTIONS_CURR_PAGE_COUNT :: ' + __OPTIONS_CURR_PAGE_COUNT );
+				console.log ( '__OPTIONS_MIN_SCENE_COUNT :: ' + __OPTIONS_MIN_SCENE_COUNT );
+				console.log ( '__OPTIONS_MAX_SCENE_COUNT :: ' + __OPTIONS_MAX_SCENE_COUNT );
+				if ( __OPTIONS_CURR_PAGE_COUNT !== 0 ) {
+					if ( __OPTIONS_CURR_PAGE_COUNT < ( __OPTIONS_MIN_SCENE_COUNT ) ) {
+						__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MAX_SCENE_COUNT;
+					}
+					console.log ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
+					this.scene.input.stopPropagation ( );
+					this.scene.scene.start ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
 				}
-				this.scene.scene.start ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
-				console.log ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
+				if ( __OPTIONS_CURR_PAGE_COUNT === 0 ) {
+					this.scene.scene.start ( 'OptionsScene' );
+				}
 			} );
 
 			this.__myArrowRight.on ( 'pointerdown', function ( ) {
 				// Where Pagination going forwards works
 				__OPTIONS_CURR_PAGE_COUNT += 1;
-				if ( __OPTIONS_CURR_PAGE_COUNT > ( __OPTIONS_MAX_SCENE_COUNT ) ) {
-					__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MIN_SCENE_COUNT;
+				console.log ( '__OPTIONS_CURR_PAGE_COUNT :: ' + __OPTIONS_CURR_PAGE_COUNT );
+				console.log ( '__OPTIONS_MIN_SCENE_COUNT :: ' + __OPTIONS_MIN_SCENE_COUNT );
+				console.log ( '__OPTIONS_MAX_SCENE_COUNT :: ' + __OPTIONS_MAX_SCENE_COUNT );
+				if ( __OPTIONS_CURR_PAGE_COUNT !== 0 ) {
+					if ( __OPTIONS_CURR_PAGE_COUNT > ( __OPTIONS_MAX_SCENE_COUNT ) ) {
+						__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MIN_SCENE_COUNT;
+					}
+					console.log ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
+					this.scene.input.stopPropagation ( );
+					this.scene.scene.start ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
 				}
-				this.scene.scene.start ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
-				console.log ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
+				if ( __OPTIONS_CURR_PAGE_COUNT === 0 ) {
+					this.scene.scene.start ( 'OptionsScene' );
+				}
 			} );
 
 			/*
