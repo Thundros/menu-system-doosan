@@ -291,33 +291,16 @@
 				__OPTIONS_CURR_PAGE_COUNT -= 1;
 				if ( __OPTIONS_CURR_PAGE_COUNT < ( __OPTIONS_MIN_SCENE_COUNT ) ) {
 					__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MAX_SCENE_COUNT;
-					console.log (
-						'\r\n\r\n' + 
-							'if' + ' ( ' + __OPTIONS_CURR_PAGE_COUNT + ' ' + '<' + ' ' + __OPTIONS_MIN_SCENE_COUNT + ' ' + ')' + ' ' + '{' + '\r\n' + 
-								'\t' + 'this.scene.scene.start' + ' ' + '(' + '\'' + 'key' + __OPTIONS_CURR_PAGE_COUNT + '\'' + ')' + '\r\n' + 
-							'}' + 
-						'\r\n\r\n'
-					);
 					this.scene.scene.start ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
 					console.log ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
-				}
-				if ( __OPTIONS_CURR_PAGE_COUNT === 0 ) {
-					this.scene.scene.start ( 'OptionsScene' );
 				}
 			} );
 
 			this.__myArrowRight.on ( 'pointerdown', function ( ) {
 				// Where Pagination going forwards works
-				__OPTIONS_CURR_PAGE_COUNT -= 1;
+				__OPTIONS_CURR_PAGE_COUNT += 1;
 				if ( __OPTIONS_CURR_PAGE_COUNT > ( __OPTIONS_MAX_SCENE_COUNT ) ) {
 					__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MIN_SCENE_COUNT;
-					console.log (
-						'\r\n\r\n' + 
-							'if' + ' ( ' + __OPTIONS_CURR_PAGE_COUNT + ' ' + '<' + ' ' + __OPTIONS_MIN_SCENE_COUNT + ' ' + ')' + ' ' + '{' + '\r\n' + 
-								'\t' + 'this.scene.scene.start' + ' ' + '(' + '\'' + 'key' + __OPTIONS_CURR_PAGE_COUNT + '\'' + ')' + '\r\n' + 
-							'}' + 
-						'\r\n\r\n'
-					);
 					this.scene.scene.start ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
 					console.log ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
 				}
