@@ -190,7 +190,6 @@
 
 				this.sound1 = this.sound.add ( this.__soundID, this.__soundData );
 
-                console.log("NEED A NICE CONFIG HERE");///////////////////////////////////////////////////////////////////////
 				this.sound1.play ( );
 
 				this.model1.bgMusicPlaying = true;
