@@ -22,7 +22,48 @@
 
 			this.__buttonAlphaLevel = [
 
-				0.25, 0.50, 1.0,
+				0.25, 0.50, 1.0, 
+
+			];
+
+			this.__buttonAlphaDuration = [
+
+				1000, 1000, 1000, 
+
+			];
+
+			this.tweens.add ({
+				targets : this.gameButton,
+				alpha : this.__buttonAlphaLevel [ 0 ],
+				duration : this.__buttonAlphaDuration [ 0 ],
+			});
+
+			this.tweens.add ({
+				targets : this.optionsButton,
+				alpha : this.__buttonAlphaLevel [ 1 ],
+				duration : this.__buttonAlphaDuration [ 1 ],
+			});
+
+			this.tweens.add ({
+				targets : this.creditsButton,
+				alpha : this.__buttonAlphaLevel [ 2 ],
+				duration : this.__buttonAlphaDuration [ 2 ],
+			});
+
+			return {
+
+				__buttonAlphaLevel : this.__buttonAlphaLevel,
+				__buttonAlphaDuration : this.__buttonAlphaDuration,
+
+			}
+
+		},
+
+		__fadeOutMenu : function ( ) {
+
+			this.__buttonAlphaLevel = [
+
+				1.0, 0.50, 0.25, 
 
 			];
 
@@ -177,7 +218,10 @@
 			this.__button = [ ];
 
 			this.__buttonFadeInAlphaLevel = [ ];
-			this.__buttonFadeInAlphaDuration = [ ];
+			this.__buttonFadeOutAlphaLevel = [ ];
+
+			this.__buttonFadeOutAlphaDuration = [ ];
+			this.__buttonFadeOutAlphaDuration = [ ];
 
 			this.__buttonX = [
 
@@ -230,13 +274,11 @@
 				});
 
 				this.__button [ this.__i ].alpha = 0.0;
-				this.__buttonFadeInAlphaLevel [ this.__i ] = this.__fadeInMenu ( ).__buttonAlphaLevel [ this.__i ];
-				this.__buttonFadeInAlphaDuration [ this.__i ] = this.__fadeInMenu ( ).__buttonAlphaDuration [ this.__i ];
 
 				this.tweens.add ({
-					targets : this.__button [ this.__i ],
-					alpha : this.__buttonAlphaLevel [ this.__i ],
-					duration : this.__buttonAlphaDuration [ this.__i ],
+					targets : this.__button [ this.__i ], 
+					alpha : this.__fadeInMenu ( ).__buttonAlphaLevel [ this.__i ], 
+					duration : this.__fadeInMenu ( ).__buttonAlphaDuration [ this.__i ], 
 				});
 
 			}
@@ -309,8 +351,8 @@
 				this.__button [ this.__i ].update (
 
 					this.__button [ this.__i ].alpha,
-					this.__buttonFadeInAlphaLevel [ this.__i ],
-					this.__buttonFadeInAlphaDuration [ this.__i ]
+					this.__buttonAlphaLevel [ this.__i ],
+					this.__buttonAlphaDuration [ this.__i ]
 
 				);
 

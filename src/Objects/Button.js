@@ -3,7 +3,7 @@
 
 	{
 
-		constructor ( scene, __objData )
+		constructor ( scene, __objData ) 
 
 		{
 
@@ -30,91 +30,31 @@
 			this.__bW = ( this.button.width );
 			this.__bH = ( this.button.height );
 
-			this.__text = this.__scene.add.text
+			this.__text = this.__scene.add.text ( 0, 0, this.__bText, {
+				fontSize : '32px', fill : '#fff', 
+			} );
 
-			(
+			Phaser.Display.Align.In.Center ( this.__text, this.button );
+			this.add ( this.button );
+			this.add ( this.__text );
 
-				0, 0, this.__bText, 
-
-				{
-
-					fontSize : '32px', fill : '#fff', 
-
+			this.button.on ( 'pointerdown', function ( ) {
+				if ( this.__buttonLocked === false ) {
+					this.__scene.scene.start ( this.__targetScene );
 				}
+			}.bind ( this ) );
 
-			);
+			this.button.on ( 'pointerover', function ( ) {
+				if ( this.__buttonLocked === false ) {
+					this.button.setTexture ( this.__key2 );
+				}
+			}.bind ( this ) );
 
-				Phaser.Display.Align.In.Center ( this.__text, this.button );
-
-					this.add ( this.button );
-
-				this.add ( this.__text );
-
-			this.button.on
-
-			(
-
-				'pointerdown', 
-
-				function ( )
-
-				{
-
-					if ( this.__buttonLocked === false )
-
-					{
-
-						this.__scene.scene.start ( this.__targetScene );
-
-					}
-
-				}.bind ( this )
-
-			);
-
-			this.button.on
-
-			(
-
-				'pointerover', 
-
-				function ( )
-
-				{
-
-					if ( this.__buttonLocked === false )
-
-					{
-
-						this.button.setTexture ( this.__key2 );
-
-					}
-
-				}.bind ( this )
-
-			);
-
-			this.button.on
-
-			(
-
-				'pointerout', 
-
-				function ( )
-
-				{
-
-					if ( this.__buttonLocked === false )
-
-					{
-
-						this.button.setTexture ( this.__key1 );
-
-					}
-
-				}.bind ( this )
-
-			);
+			this.button.on ( 'pointerout', function ( ) {
+				if ( this.__buttonLocked === false ) {
+					this.button.setTexture ( this.__key1 );
+				}
+			}.bind ( this ) );
 
 			this.__scene.add.existing ( this );
 

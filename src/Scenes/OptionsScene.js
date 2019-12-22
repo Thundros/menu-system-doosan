@@ -3,20 +3,20 @@
 
 	({
 
-		Extends : Phaser.Scene,
+		Extends : Phaser.Scene, 
 
-		initialize :
+		initialize : 
 
 		function OptionsScene ( ) {
 
 			Phaser.Scene.call ( this, {
 
-				key : 'OptionsScene',
-				active : false,
+				key : 'OptionsScene', 
+				active : false, 
 
 			} );
 
-		},
+		}, 
 
 		CreateGameButton : function ( __objData ) {
 
@@ -24,36 +24,34 @@
 
 			this.__buttonObj = {
 
-				scene : this.__objData.scene,
-				x : this.__objData.x,
-				y : this.__objData.y,
-				key1 : this.__objData.key1,
-				key2 : this.__objData.key2,
-				text : this.__objData.text,
-				targetScene : this.__objData.targetScene,
-				locked : this.__objData.locked,
+				scene : this.__objData.scene, 
+				x : this.__objData.x, 
+				y : this.__objData.y, 
+				key1 : this.__objData.key1, 
+				key2 : this.__objData.key2, 
+				text : this.__objData.text, 
+				targetScene : this.__objData.targetScene, 
+				locked : this.__objData.locked, 
 
 			}
 
 			this.__buttons = new Button ( this.__buttonObj.scene, {
 
-				x : this.__buttonObj.x,
-				y : this.__buttonObj.y,
-				key1 : this.__buttonObj.key1,
-				key2 : this.__buttonObj.key2,
-				text : this.__buttonObj.text,
-				targetScene : this.__buttonObj.targetScene,
-				locked : this.__buttonObj.locked,
+				x : this.__buttonObj.x, 
+				y : this.__buttonObj.y, 
+				key1 : this.__buttonObj.key1, 
+				key2 : this.__buttonObj.key2, 
+				text : this.__buttonObj.text, 
+				targetScene : this.__buttonObj.targetScene, 
+				locked : this.__buttonObj.locked, 
 
 			} );
 
 			return this.__buttons;
 
-		},
+		}, 
 
 		updateAudio : function ( ) {
-
-			console.error ( this.sys.game.globals );
 
 			if ( this.model.musicOn === false ) {
 
@@ -114,7 +112,7 @@
 
             // "150 is the size of the font, 50 is the offset"
             // "the font size is 150 i vaguely recall"
-            //this.add.rectangle((this.__CONFIG_WIDTH/2),0, 1, 2000, 0xffffff).setOrigin(0,0); // half the screen
+            //this.add.rectangle((this.__CONFIG_WIDTH/2), 0, 1, 2000, 0xffffff).setOrigin(0, 0); // half the screen
 
             this.__half = ( this.__CONFIG_WIDTH / 2 );
             this.__quarter = ( this.__half / 2 );
@@ -127,7 +125,7 @@
             this.add.rectangle ( ( this.__halfRight + ( 150 / 2 ) ), 0, 1, 2000, 0xffffff ).setOrigin ( 0, 0 ); // half the screen
 
 			this.__textArray = [
-				'<', '>', 'Options',
+				'<', '>', 'Options', 
 				'Sound Enabled', 'Music Enabled', 
 				'Debug', 
 			];
@@ -137,47 +135,47 @@
 			];
 
 			this.__musicButtonY = [
-				( ( this.__CONFIG_HEIGHT ) - ( 385 ) ),
+				( ( this.__CONFIG_HEIGHT ) - ( 385 ) ), 
 			];
 
 			this.__soundButtonX = [
-				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 48 ) ),
+				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 48 ) ), 
 			];
 
 			this.__soundButtonY = [
-				( ( this.__CONFIG_HEIGHT ) - ( 455 ) ),
+				( ( this.__CONFIG_HEIGHT ) - ( 455 ) ), 
 			];
 
 			this.__optionTitleX = [
-				( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ),
+				( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ), 
 			];
 
 			this.__optionTitleY = [
-				( ( this.__CONFIG_HALF_HEIGHT ) - ( 200 ) ),
+				( ( this.__CONFIG_HALF_HEIGHT ) - ( 200 ) ), 
 			];
 
 			this.__musicLabelX = [
-				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 4 ) ),
+				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 4 ) ), 
 			];
 
 			this.__musicLabelY = [
-				( ( this.__CONFIG_HEIGHT ) - ( 390 ) ),
+				( ( this.__CONFIG_HEIGHT ) - ( 390 ) ), 
 			];
 
 			this.__soundLabelX = [
-				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 4 ) ),
+				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 4 ) ), 
 			];
 
 			this.__soundLabelY = [
-				( ( this.__CONFIG_HEIGHT ) - ( 460 ) ),
+				( ( this.__CONFIG_HEIGHT ) - ( 460 ) ), 
 			];
 
 			this.__arrowLeftX = [
-				( ( ( this.__CONFIG_HALF_WIDTH / 2 ) - ( 150 / 2 ) ) - 5 ),
+				( ( ( this.__CONFIG_HALF_WIDTH / 2 ) - ( 150 / 2 ) ) - 5 ), 
 			];
 
 			this.__arrowLeftY = [
-				( ( this.__CONFIG_HALF_HEIGHT ) - ( 250 / 2 ) ),
+				( ( this.__CONFIG_HALF_HEIGHT ) - ( 250 / 2 ) ), 
 			];
 
 			this.__arrowRightX = [
@@ -185,27 +183,27 @@
 			];
 
 			this.__arrowRightY = [
-				( ( this.__CONFIG_HALF_HEIGHT ) - ( 250 / 2 ) ),
+				( ( this.__CONFIG_HALF_HEIGHT ) - ( 250 / 2 ) ), 
 			];
 
 			this.__musicButton = this.add.image (
-				this.__musicButtonX [ 0 ],
-				this.__musicButtonY [ 0 ],
+				this.__musicButtonX [ 0 ], 
+				this.__musicButtonY [ 0 ], 
 				'checkedBox'
 			);
 
 			this.__soundButton = this.add.image (
-				this.__soundButtonX [ 0 ],
-				this.__soundButtonY [ 0 ],
+				this.__soundButtonX [ 0 ], 
+				this.__soundButtonY [ 0 ], 
 				'checkedBox'
 			);
 
 			this.__text = this.add.text (
-				( this.__optionTitleX [ 0 ] ),
-				( this.__optionTitleY [ 0 ] ),
-				this.__textArray [ 2 ],
+				( this.__optionTitleX [ 0 ] ), 
+				( this.__optionTitleY [ 0 ] ), 
+				this.__textArray [ 2 ], 
 				{
-					fontSize : 40,
+					fontSize : 40, 
 				}
 			);
 
@@ -266,14 +264,14 @@
 
 
 			this.__menuButton = this.CreateGameButton ({
-				scene : this,
-				x : ( __config.width / 2 ),
-				y : ( ( __config.height / 2 ) + ( 100 ) ),
-				key1 : 'blueButton1',
-				key2 : 'blueButton2',
-				text : 'Menu',
-				targetScene : 'TitleScene',
-				locked : false,
+				scene : this, 
+				x : ( __config.width / 2 ), 
+				y : ( ( __config.height / 2 ) + ( 100 ) ), 
+				key1 : 'blueButton1', 
+				key2 : 'blueButton2', 
+				text : 'Menu', 
+				targetScene : 'TitleScene', 
+				locked : false, 
 			});
 
 			this.__musicButton.on ( 'pointerdown', function ( ) {
@@ -308,14 +306,10 @@
 			this.__myArrowRight.on ( 'pointerdown', function ( ) {
 				// Where Pagination going forwards works
 				__OPTIONS_CURR_PAGE_COUNT += 1;
-				console.log ( '__OPTIONS_CURR_PAGE_COUNT :: ' + __OPTIONS_CURR_PAGE_COUNT );
-				console.log ( '__OPTIONS_MIN_SCENE_COUNT :: ' + __OPTIONS_MIN_SCENE_COUNT );
-				console.log ( '__OPTIONS_MAX_SCENE_COUNT :: ' + __OPTIONS_MAX_SCENE_COUNT );
 				if ( __OPTIONS_CURR_PAGE_COUNT !== 0 ) {
 					if ( __OPTIONS_CURR_PAGE_COUNT > ( __OPTIONS_MAX_SCENE_COUNT ) ) {
 						__OPTIONS_CURR_PAGE_COUNT = __OPTIONS_MIN_SCENE_COUNT;
 					}
-					console.log ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
 					this.scene.input.stopPropagation ( );
 					this.scene.scene.start ( 'key' + __OPTIONS_CURR_PAGE_COUNT );
 				}
@@ -344,7 +338,7 @@
 
 			this.updateAudio ( );
 
-		},
+		}, 
 
 	});
 
