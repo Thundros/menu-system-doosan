@@ -262,6 +262,8 @@
 
 			];
 
+			this.__btnObjects = [ ];
+
 			for ( this.__i = 0; this.__i <= 2; this.__i++ ) {
 
 				// Game
@@ -272,12 +274,59 @@
 					targetScene : this.__buttonTargetScene [ this.__i ], locked : this.__buttonLocked [ this.__i ]
 				});
 
+				this.__btnObjects.push ( this.__button [ this.__i ] );
+
 				this.__button [ this.__i ].alpha = 0.0;
+
+				/*
 
 				this.tweens.add ({
 					targets : this.__button [ this.__i ], 
 					alpha : this.__fadeInMenu ( ).__buttonAlphaLevel [ this.__i ], 
 					duration : this.__fadeInMenu ( ).__buttonAlphaDuration [ this.__i ], 
+				});
+
+				*/
+
+				this.tweens.add ({
+
+					targets : this.__button [ this.__i ], 
+					alpha : { from : 0, to : 1 }, 
+					ease : 'Linear', 
+					duration : 3000, 
+					repeat : 0, 
+					yoyo : false, 
+
+					onComplete : ( ) => {
+
+						this.__button [ this.__i ].forEach ( ( btn, i ) => {
+
+							this.__button [ this.__i ].on ( 'pointerdown', ( ) => {
+								btn.fillStyle ( 0xFF0000, 1 );
+								btn.fillRect ( ( 100 * i ), 60, 80, 60 );
+								this.btnObjects.forEach ( ( b ) => b.removeInteractive ( ) );
+								// Fade out btns
+								console.log ( btn.name );
+								this.tweens.add ({
+									targets : this.btnObjects, 
+									alpha : { from : 1, to : 0 }, 
+									ease : 'Linear', 
+									duration : 2000, 
+									repeat : 0, 
+									yoyo : false, 
+									onComplete : ( ) => {
+										// change scene when all faded
+										alert ( 'go to scene :: ' + btn.destination );
+									}
+
+								});
+
+							} );
+
+						} )
+
+					}
+
 				});
 
 			}
@@ -302,21 +351,10 @@
 
 			];
 
-			// this.model = this.sys.game.globals.model;
-
-			// this.titleMusic = this.sound.add('bgMusic', { volume: 0.1, loop: true });
-			// this.titleMusic.play();
-
-			// this.events.on('shutdown', () => { this.titleMusic.stop() })
-
-			// /*
-
-				this.createAudio({
-					soundID : this.__soundTrack [ 0 ],
-					soundData : this.__soundData [ 0 ],
-				});
-
-			// */
+			this.createAudio({
+				soundID : this.__soundTrack [ 0 ],
+				soundData : this.__soundData [ 0 ],
+			});
 
 		}, 
 
@@ -345,6 +383,8 @@
 
 			this.__stats.update ( );
 
+			/*
+
 			for ( this.__i = 0; this.__i <= 2; this.__i++ ) {
 
 				this.__button [ this.__i ].update (
@@ -356,6 +396,8 @@
 				);
 
 			}
+
+			*/
 
 		}
 
