@@ -16,7 +16,7 @@
 
 			} );
 
-		},
+		}, 
 
 		__fadeInMenu : function ( ) {
 
@@ -57,7 +57,7 @@
 
 			}
 
-		},
+		}, 
 
 		__fadeInMenu : function ( ) {
 
@@ -98,7 +98,7 @@
 
 			}
 
-		},
+		}, 
 
 		__fadeOutMenu : function ( ) {
 
@@ -139,7 +139,7 @@
 
 			}
 
-		},
+		}, 
 
 		CreateGameButton : function ( __objData ) {
 
@@ -172,7 +172,7 @@
 
 			return this.__buttons;
 
-		},
+		}, 
 
 		createAudio : function ( __objData ) {
 
@@ -199,7 +199,7 @@
 
 			return this.__lvlMusic;
 
-		},
+		}, 
 
 		preload : function ( ) {
 
@@ -208,7 +208,7 @@
 			this.__stats = new Stats ( );
 			document.body.appendChild ( this.__stats.dom );
 
-		},
+		}, 
 
 		create : function ( ) {
 
@@ -318,7 +318,7 @@
 
 			// */
 
-		},
+		}, 
 
 		centerButton : function ( gameObject, offset = 0 ) {
 
@@ -329,7 +329,7 @@
 
 			) );
 
-		},
+		}, 
 
 		centerButtonText : function ( gameText, gameButton ) {
 
@@ -339,7 +339,7 @@
 
 			);
 
-		},
+		}, 
 
 		update : function ( ) {
 
