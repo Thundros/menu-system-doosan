@@ -18,7 +18,7 @@
 
 		}, 
 
-		/*
+		// /*
 
 		__fadeInMenu : function ( ) {
 
@@ -102,7 +102,7 @@
 
 		}, 
 
-		*/
+		// */
 
 		CreateGameButton : function ( __objData ) {
 
@@ -241,6 +241,9 @@
 
 				this.__button [ this.__i ].alpha = 0.0;
 
+				this.__buttonAlphaLevel [ this.__i ] = this.__fadeInMenu ( ).__buttonAlphaLevel [ this.__i ];
+				this.__buttonAlphaDuration [ this.__i ] = this.__fadeInMenu ( ).__buttonAlphaDuration [ this.__i ];
+
 				/*
 
 				this.tweens.add ({
@@ -256,7 +259,7 @@
 					targets : this.__button [ this.__i ], 
 					alpha : { from : 0, to : 1 }, 
 					ease : 'Linear', 
-					duration : 3000, 
+					duration : 1000, 
 					repeat : 0, 
 					yoyo : false, 
 
