@@ -64,9 +64,6 @@
 
 		{
 
-			__buttonAlphaLevel = __buttonAlphaLevel || 1.0;
-			__buttonAlphaDuration = __buttonAlphaDuration || 1000;
-
 			this.__buttonAlpha = __buttonAlpha;
 			this.__buttonAlphaLevel = __buttonAlphaLevel;
 			this.__buttonAlphaDuration = __buttonAlphaDuration;

@@ -231,6 +231,8 @@
 
 				// Game
 
+				console.log ( this.__buttonLocked [ this.__i ] );
+
 				this.__button [ this.__i ] = this.CreateGameButton ({
 					scene : this.__scene, x : this.__buttonX [ this.__i ], y : this.__buttonY [ this.__i ], 
 					key1 : this.__buttonKeys [ 0 ], key2 : this.__buttonKeys [ 1 ], text : this.__buttonText [ this.__i ], 
@@ -240,22 +242,6 @@
 				this.__btnObjects.push ( this.__button [ this.__i ] );
 
 				this.__button [ this.__i ].alpha = 0.0;
-
-				this.__buttonAlphaLevel [ this.__i ] = this.__fadeInMenu ( ).__buttonAlphaLevel [ this.__i ];
-				this.__buttonAlphaDuration [ this.__i ] = this.__fadeInMenu ( ).__buttonAlphaDuration [ this.__i ];
-
-				console.log ( this.__buttonAlphaLevel [ this.__i ] );
-				console.log ( this.__buttonAlphaDuration [ this.__i ] );
-
-				/*
-
-				this.tweens.add ({
-					targets : this.__button [ this.__i ], 
-					alpha : this.__fadeInMenu ( ).__buttonAlphaLevel [ this.__i ], 
-					duration : this.__fadeInMenu ( ).__buttonAlphaDuration [ this.__i ], 
-				});
-
-				*/
 
 				this.tweens.add ({
 
@@ -357,8 +343,8 @@
 				this.__button [ this.__i ].update (
 
 					this.__button [ this.__i ].alpha, 
-					this.__buttonAlphaLevel [ this.__i ], 
-					this.__buttonAlphaDuration [ this.__i ]
+					this.__fadeInMenu ( ).__buttonAlphaLevel [ this.__i ], 
+					this.__fadeInMenu ( ).__buttonAlphaDuration [ this.__i ]
 
 				);
 
