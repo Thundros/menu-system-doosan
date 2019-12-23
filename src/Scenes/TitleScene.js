@@ -18,46 +18,7 @@
 
 		}, 
 
-		__fadeInMenu : function ( ) {
-
-			this.__buttonAlphaLevel = [
-
-				0.25, 0.50, 1.0, 
-
-			];
-
-			this.__buttonAlphaDuration = [
-
-				1000, 1000, 1000, 
-
-			];
-
-			this.tweens.add ({
-				targets : this.gameButton,
-				alpha : this.__buttonAlphaLevel [ 0 ],
-				duration : this.__buttonAlphaDuration [ 0 ],
-			});
-
-			this.tweens.add ({
-				targets : this.optionsButton,
-				alpha : this.__buttonAlphaLevel [ 1 ],
-				duration : this.__buttonAlphaDuration [ 1 ],
-			});
-
-			this.tweens.add ({
-				targets : this.creditsButton,
-				alpha : this.__buttonAlphaLevel [ 2 ],
-				duration : this.__buttonAlphaDuration [ 2 ],
-			});
-
-			return {
-
-				__buttonAlphaLevel : this.__buttonAlphaLevel,
-				__buttonAlphaDuration : this.__buttonAlphaDuration,
-
-			}
-
-		}, 
+		/*
 
 		__fadeInMenu : function ( ) {
 
@@ -140,6 +101,8 @@
 			}
 
 		}, 
+
+		*/
 
 		CreateGameButton : function ( __objData ) {
 
@@ -299,9 +262,9 @@
 
 					onComplete : ( ) => {
 
-						this.__button [ this.__i ].forEach ( ( btn, i ) => {
+						this.__btnObjects.forEach ( ( btn, i ) => {
 
-							this.__button [ this.__i ].on ( 'pointerdown', ( ) => {
+							btn.on ( 'pointerdown', ( ) => {
 								btn.fillStyle ( 0xFF0000, 1 );
 								btn.fillRect ( ( 100 * i ), 60, 80, 60 );
 								this.btnObjects.forEach ( ( b ) => b.removeInteractive ( ) );
@@ -383,8 +346,6 @@
 
 			this.__stats.update ( );
 
-			/*
-
 			for ( this.__i = 0; this.__i <= 2; this.__i++ ) {
 
 				this.__button [ this.__i ].update (
@@ -396,8 +357,6 @@
 				);
 
 			}
-
-			*/
 
 		}
 
