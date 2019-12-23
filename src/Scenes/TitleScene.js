@@ -241,11 +241,11 @@
 
 				this.__btnObjects.push ( this.__button [ this.__i ] );
 
-				this.__button [ this.__i ].alpha = 0.0;
+				this.__btnObjects.alpha = 0.0;
 
 				this.tweens.add ({
 
-					targets : this.__button [ this.__i ], 
+					targets : this.__btnObjects, 
 					alpha : { from : 0, to : 1 }, 
 					ease : 'Linear', 
 					duration : 1000, 
@@ -253,35 +253,24 @@
 					yoyo : false, 
 
 					onComplete : ( ) => {
-
 						this.__btnObjects.forEach ( ( btn, i ) => {
-
-							btn.on ( 'pointerdown', ( ) => {
-								btn.fillStyle ( 0xFF0000, 1 );
-								btn.fillRect ( ( 100 * i ), 60, 80, 60 );
-								this.btnObjects.forEach ( ( b ) => b.removeInteractive ( ) );
-								// Fade out btns
-								console.log ( btn.name );
-								this.tweens.add ({
-									targets : this.btnObjects, 
-									alpha : { from : 1, to : 0 }, 
-									ease : 'Linear', 
-									duration : 2000, 
-									repeat : 0, 
-									yoyo : false, 
-									onComplete : ( ) => {
-										// change scene when all faded
-										alert ( 'go to scene :: ' + btn.destination );
-									}
-
-								});
-
-							} );
-
+							btn.on ( 'pointerdown', function ( ) {
+								if ( this.__buttonLocked === false ) {
+									this.__scene.tweens.add({
+										targets: this.__btnObjects, // the targets should be a reference to the array of buttons
+										alpha: { from: 1, to: 0 },
+										ease: 'Linear',
+										duration: 2000,
+										repeat: 0,
+										yoyo: false,
+										onComplete: () => {
+											this.__scene.scene.start ( this.__targetScene );
+										}
+									})
+								}
+							}.bind ( this ) );
 						} )
-
 					}
-
 				});
 
 			}
