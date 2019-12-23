@@ -59,7 +59,7 @@
 
 		},
 
-		__fadeOutMenu : function ( ) {
+		__fadeInMenu : function ( ) {
 
 			this.__buttonAlphaLevel = [
 
