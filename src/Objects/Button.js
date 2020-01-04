@@ -49,6 +49,8 @@
 
 			this.button = this.__scene.add.sprite ( 0, 0, this.__key1 ).setInteractive ( );
 
+			this.cameras.main.centerOn ( 0, 0 );
+
 			this.__bX = ( this.button.x );
 			this.__bY = ( this.button.y );
 			this.__bW = ( this.button.width );
