@@ -217,7 +217,7 @@
 				});
 
 				this.__btnObjects.push ( this.__button [ this.__i ] );
-
+				console.log ( this.__button [ this.__i ] );
 				this.__button [ this.__i ].on ( Phaser.Input.Events.POINTER_DOWN, function ( ) {
 
 					this.__scene.tweens.add ({
