@@ -37,6 +37,16 @@
 			this.x = this.__x;
 			this.y = this.__y;
 
+			console.error ( this.__scene );
+			console.error ( this.__add );
+			console.error ( this.__x );
+			console.error ( this.__y );
+			console.error ( this.__key1 );
+			console.error ( this.__key2 );
+			console.error ( this.__bText );
+			console.error ( this.__buttonLocked );
+			console.error ( this.__targetScene );
+
 			this.button = this.__scene.add.sprite ( 0, 0, this.__key1 ).setInteractive ( );
 
 			this.__bX = ( this.button.x );

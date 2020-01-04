@@ -85,8 +85,9 @@
 		CreateGameButton : function ( __objData ) {
 
 			this.__objData = __objData;
+			this.__buttons = new Button ( );
 
-			this.__buttonObj = {
+			this.__buttons.CreateButton ({
 
 				scene : this.__objData.scene, 
 				add : this.__objData.add, 
@@ -97,22 +98,6 @@
 				text : this.__objData.text, 
 				targetScene : this.__objData.targetScene, 
 				locked : this.__objData.locked, 
-
-			}
-
-			this.__buttons = new Button ( );
-
-			this.__buttons.CreateButton ({
-
-				scene : this.__buttonObj.scene, 
-				add : this.__buttonObj.add, 
-				x : this.__buttonObj.x, 
-				y : this.__buttonObj.y, 
-				key1 : this.__buttonObj.key1, 
-				key2 : this.__buttonObj.key2, 
-				text : this.__buttonObj.text, 
-				targetScene : this.__buttonObj.targetScene, 
-				locked : this.__buttonObj.locked, 
 
 			});
 
@@ -232,8 +217,6 @@
 				});
 
 				this.__btnObjects.push ( this.__button [ this.__i ] );
-
-				console.error ( this.__button [ this.__i ] );
 
 				this.__button [ this.__i ].on ( 'pointerdown', function ( ) {
 					this.__scene.tweens.add ({
