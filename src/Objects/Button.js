@@ -1,17 +1,31 @@
 
-	class Button extends Phaser.GameObjects.Container
 
-	{
+	var Button = new Phaser.Class
 
-		constructor ( scene, __objData ) 
+	({
 
-		{
+		Extends : Phaser.GameObjects.Container, 
 
-			super ( scene, __objData );
+		initialize :
+
+		function Button ( ) {
+
+			Phaser.Scene.call ( this, {
+
+				key : 'Button', 
+				active : true, 
+
+			} );
+
+		}, 
+
+		CreateButton : function ( __objData ) {
 
 			this.__objData = __objData;
+			console.error ( this.__objData );
 
-			this.__scene = scene;
+			this.__scene = this.__objData.scene;
+			this.__add = this.__objData.add;
 			this.__x = this.__objData.x;
 			this.__y = this.__objData.y;
 			this.__key1 = this.__objData.key1;
@@ -35,14 +49,8 @@
 			} );
 
 			Phaser.Display.Align.In.Center ( this.__text, this.button );
-			this.add ( this.button );
-			this.add ( this.__text );
-
-			this.button.on ( 'pointerdown', function ( ) {
-				if ( this.__buttonLocked === false ) {
-					this.__scene.scene.start ( this.__targetScene );
-				}
-			}.bind ( this ) );
+			// this.__add ( this.button );
+			// this.__add ( this.__text );
 
 			this.button.on ( 'pointerover', function ( ) {
 				if ( this.__buttonLocked === false ) {
@@ -58,9 +66,11 @@
 
 			this.__scene.add.existing ( this );
 
-		}
+			return this.button;
 
-		update ( __buttonAlpha, __buttonAlphaLevel, __buttonAlphaDuration )
+		}, 
+
+		UpdateButton : function ( __buttonAlpha, __buttonAlphaLevel, __buttonAlphaDuration )
 
 		{
 
@@ -78,6 +88,6 @@
 
 		}
 
-	}
+	});
 
 

@@ -27,7 +27,7 @@
 	this.__GAME_SCALERATIO = ( this.__GAME_PIXELRATIO / 3 );
 	this.__GAME_PIXEL_ART = ( false ); // ( Default `Pixel Art` is `false` )
 	this.__GAME_ANTIALIAS = ( false ); // ( Default `Anti Alias` is `false` )
-	this.__GAME_BACKGROUND_COLOR = ( '#000' ); // ( Set to `Royal Purple` Background Color )
+	this.__GAME_BACKGROUND_COLOR = ( '#000' ); // ( Set to `Black` Background Color )
 	this.__GAME_TARGETFPS = ( 60 ); // ( Default `Target FPS` is `60` )
 	this.__GAME_MINFPS = ( 60 ); // ( Default `Minimum FPS` is `60` )
 	this.__GAME_FORCESETTIMEOUT = ( true ); // ( Default `Force SetTimeout` is `false` )
