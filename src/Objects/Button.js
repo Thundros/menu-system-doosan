@@ -4,7 +4,7 @@
 
 	({
 
-		Extends : Phaser.GameObjects.Container, 
+		Extends : Phaser.Scene, 
 
 		initialize :
 
@@ -13,7 +13,7 @@
 			Phaser.Scene.call ( this, {
 
 				key : 'Button', 
-				active : true, 
+				active : false, 
 
 			} );
 
@@ -47,22 +47,37 @@
 			console.error ( this.__buttonLocked );
 			console.error ( this.__targetScene );
 
-			this.button = this.__scene.add.sprite ( 0, 0, this.__key1 ).setInteractive ( );
+			this.button = this.__scene.add.sprite ( this.x, this.y, this.__key1 ).setInteractive ( );
 
-			this.cameras.main.centerOn ( 0, 0 );
+			this.__text = this.__scene.add.text ( 0, 0, this.__bText, {
+				fontFamily : 'Courier', fontSize : '32px', fill : '#fff', 
+			} );
 
 			this.__bX = ( this.button.x );
 			this.__bY = ( this.button.y );
 			this.__bW = ( this.button.width );
 			this.__bH = ( this.button.height );
 
-			this.__text = this.__scene.add.text ( 0, 0, this.__bText, {
-				fontSize : '32px', fill : '#fff', 
-			} );
-
 			Phaser.Display.Align.In.Center ( this.__text, this.button );
-			// this.__add ( this.button );
-			// this.__add ( this.__text );
+
+			this.button.on ( 'pointerdown', function ( ) {
+				this.button.forEach ( ( b, i ) => {
+					this.__scene.tweens.add ({
+						targets : [
+							this.button, this.__text, 
+						], 
+						targetScenes : this.__targetScene, 
+						repeat : 0, 
+						duration : 750, 
+						alpha : { from : 1.0, to : 0.0 }, 
+						easeType : 'Linear', 
+						yoyo : false, 
+						onComplete : ( ) => {
+							this.__scene.scene.start ( this.__targetScene );
+						}
+					});
+				} );
+			}.bind ( this ) );
 
 			this.button.on ( 'pointerover', function ( ) {
 				if ( this.__buttonLocked === false ) {

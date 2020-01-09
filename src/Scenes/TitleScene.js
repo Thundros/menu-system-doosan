@@ -205,8 +205,6 @@
 					text : this.__buttonText [ this.__i ], targetScene : this.__buttonTargetScene [ this.__i ], locked : this.__buttonLocked [ this.__i ]
 				});
 
-				this.__button [ this.__i ].alpha = 0.0;
-
 				this.__buttonFadeInAlphaLevel [ this.__i ] = this.__fadeInMenu ( ).__buttonAlphaLevel [ this.__i ];
 				this.__buttonFadeInAlphaDuration [ this.__i ] = this.__fadeInMenu ( ).__buttonAlphaDuration [ this.__i ];
 
@@ -218,24 +216,6 @@
 
 				this.__btnObjects.push ( this.__button [ this.__i ] );
 				console.log ( this.__button [ this.__i ] );
-				this.__button [ this.__i ].button.on ( Phaser.Input.Events.POINTER_DOWN, function ( ) {
-
-					this.__scene.tweens.add ({
-						targets : [
-							this.__button [ this.__i ], 
-						], 
-						targetScenes : this.__targetScene, 
-						repeat : 0, 
-						duration : 750, 
-						alpha : { from : 1.0, to : 0.0 }, 
-						easeType : 'Linear', 
-						yoyo : false, 
-						onComplete : ( ) => {
-							this.scene.start ( this.__targetScene );
-						}
-					});
-
-				}.bind ( this ) );
 
 			}
 

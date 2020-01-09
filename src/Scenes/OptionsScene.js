@@ -21,10 +21,12 @@
 		CreateGameButton : function ( __objData ) {
 
 			this.__objData = __objData;
+			this.__buttons = new Button ( );
 
-			this.__buttonObj = {
+			this.__buttons.CreateButton ({
 
 				scene : this.__objData.scene, 
+				add : this.__objData.add, 
 				x : this.__objData.x, 
 				y : this.__objData.y, 
 				key1 : this.__objData.key1, 
@@ -33,19 +35,7 @@
 				targetScene : this.__objData.targetScene, 
 				locked : this.__objData.locked, 
 
-			}
-
-			this.__buttons = new Button ( this.__buttonObj.scene, {
-
-				x : this.__buttonObj.x, 
-				y : this.__buttonObj.y, 
-				key1 : this.__buttonObj.key1, 
-				key2 : this.__buttonObj.key2, 
-				text : this.__buttonObj.text, 
-				targetScene : this.__buttonObj.targetScene, 
-				locked : this.__buttonObj.locked, 
-
-			} );
+			});
 
 			return this.__buttons;
 
@@ -262,14 +252,14 @@
 			this.__myArrowLeft.setInteractive ( );
 			this.__myArrowRight.setInteractive ( );
 
-
 			this.__menuButton = this.CreateGameButton ({
 				scene : this, 
+				add : this.add, 
 				x : ( __config.width / 2 ), 
 				y : ( ( __config.height / 2 ) + ( 100 ) ), 
 				key1 : 'blueButton1', 
 				key2 : 'blueButton2', 
-				text : 'Menu', 
+				text : 'Main Menu', 
 				targetScene : 'TitleScene', 
 				locked : false, 
 			});
