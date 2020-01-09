@@ -60,23 +60,6 @@
 
 			Phaser.Display.Align.In.Center ( this.__text, this.button );
 
-			this.button.on ( 'pointerdown', function ( ) {
-				this.__scene.tweens.add ({
-					targets : [
-						this.button, this.__text, 
-					], 
-					targetScenes : this.__targetScene, 
-					repeat : 0, 
-					duration : 750, 
-					alpha : { from : 1.0, to : 0.0 }, 
-					easeType : 'Linear', 
-					yoyo : false, 
-					onComplete : ( ) => {
-						this.__scene.scene.start ( this.__targetScene );
-					}
-				});
-			}.bind ( this ) );
-
 			this.button.on ( 'pointerover', function ( ) {
 				if ( this.__buttonLocked === false ) {
 					this.button.setTexture ( this.__key2 );

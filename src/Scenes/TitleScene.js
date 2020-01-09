@@ -80,8 +80,6 @@
 
 		}, 
 
-		// */
-
 		CreateGameButton : function ( __objData ) {
 
 			this.__objData = __objData;
@@ -216,6 +214,23 @@
 
 				this.__btnObjects.push ( this.__button [ this.__i ] );
 				console.log ( this.__button [ this.__i ] );
+
+				this.__btnObjects [ this.__i ].button.on ( 'pointerdown', function ( ) {
+					this.__scene.tweens.add ({
+						targets : [
+							this.__btnObjects, this.__buttonText [ this.__i ], 
+						], 
+						targetScenes : this.__buttonTargetScene [ this.__i ], 
+						repeat : 0, 
+						duration : 750, 
+						alpha : { from : 1.0, to : 0.0 }, 
+						easeType : 'Linear', 
+						yoyo : false, 
+						onComplete : ( ) => {
+							this.__scene.scene.start ( this.__buttonTargetScene );
+						}
+					});
+				}.bind ( this ) );
 
 			}
 
