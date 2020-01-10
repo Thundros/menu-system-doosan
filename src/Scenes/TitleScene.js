@@ -208,11 +208,11 @@
 
 				/*
 
-				this.tweens.add ({
-					targets : this.__button [ this.__i ], 
-					alpha : this.__buttonFadeInAlphaLevel [ this.__i ], 
-					duration : this.__buttonFadeInAlphaDuration [ this.__i ], 
-				});
+					this.tweens.add ({
+						targets : this.__button [ this.__i ], 
+						alpha : this.__buttonFadeInAlphaLevel [ this.__i ], 
+						duration : this.__buttonFadeInAlphaDuration [ this.__i ], 
+					});
 				
 				*/
 
