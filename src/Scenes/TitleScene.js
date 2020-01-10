@@ -206,18 +206,14 @@
 				this.__buttonFadeInAlphaLevel [ this.__i ] = this.__fadeInMenu ( ).__buttonAlphaLevel [ this.__i ];
 				this.__buttonFadeInAlphaDuration [ this.__i ] = this.__fadeInMenu ( ).__buttonAlphaDuration [ this.__i ];
 
-				/*
-
-					this.tweens.add ({
-						targets : this.__button [ this.__i ], 
-						alpha : this.__buttonFadeInAlphaLevel [ this.__i ], 
-						duration : this.__buttonFadeInAlphaDuration [ this.__i ], 
-					});
-				
-				*/
-
 				this.__btnObjects.push ( this.__button [ this.__i ] );
 				console.log ( this.__button [ this.__i ] );
+
+				this.tweens.add ({
+					targets : this.__btnObjects [ this.__i ], 
+					alpha : this.__buttonFadeInAlphaLevel [ this.__i ], 
+					duration : this.__buttonFadeInAlphaDuration [ this.__i ], 
+				});
 
 				this.__btnObjects [ this.__i ].button.on ( 'pointerdown', function ( ) {
 					this.__scene.tweens.add ({
