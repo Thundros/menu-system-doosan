@@ -193,38 +193,38 @@
 
 			this.__btnObjects = [ ];
 
-			for ( this.__i = 0; this.__i <= 2; this.__i++ ) {
+			for ( let __i = 0; __i <= 2; __i++ ) {
 
 				// Game
 
-				this.__button [ this.__i ] = this.CreateGameButton ({
-					scene : this.__scene, add : this.add, x : this.__buttonX [ this.__i ], 
-					y : this.__buttonY [ this.__i ], key1 : this.__buttonKeys [ 0 ], key2 : this.__buttonKeys [ 1 ], 
-					text : this.__buttonText [ this.__i ], targetScene : this.__buttonTargetScene [ this.__i ], locked : this.__buttonLocked [ this.__i ]
+				this.__button [ __i ] = this.CreateGameButton ({
+					scene : this.__scene, add : this.add, x : this.__buttonX [ __i ], 
+					y : this.__buttonY [ __i ], key1 : this.__buttonKeys [ 0 ], key2 : this.__buttonKeys [ 1 ], 
+					text : this.__buttonText [ __i ], targetScene : this.__buttonTargetScene [ __i ], locked : this.__buttonLocked [ __i ]
 				});
 
-				this.__buttonFadeInAlphaLevel [ this.__i ] = this.__fadeInMenu ( ).__buttonAlphaLevel [ this.__i ];
-				this.__buttonFadeInAlphaDuration [ this.__i ] = this.__fadeInMenu ( ).__buttonAlphaDuration [ this.__i ];
+				this.__buttonFadeInAlphaLevel [ __i ] = this.__fadeInMenu ( ).__buttonAlphaLevel [ __i ];
+				this.__buttonFadeInAlphaDuration [ __i ] = this.__fadeInMenu ( ).__buttonAlphaDuration [ __i ];
 
-				this.__btnObjects.push ( this.__button [ this.__i ] );
-				console.log ( this.__button [ this.__i ] );
+				this.__btnObjects.push ( this.__button [ __i ] );
+				console.log ( this.__button [ __i ] );
 
 				this.tweens.add ({
-					targets : this.__btnObjects [ this.__i ], 
-					alpha : this.__buttonFadeInAlphaLevel [ this.__i ], 
-					duration : this.__buttonFadeInAlphaDuration [ this.__i ], 
+					targets : this.__btnObjects [ __i ], 
+					alpha : this.__buttonFadeInAlphaLevel [ __i ], 
+					duration : this.__buttonFadeInAlphaDuration [ __i ], 
 				});
 
-				this.__btnObjects [ this.__i ].button.on ( 'pointerdown', function ( ) {
+				this.__btnObjects [ __i ].button.on ( 'pointerdown', function ( ) {
 					this.__scene.tweens.add ({
-						targets : this.__btnObjects [ this.__i ], 
+						targets : this.__btnObjects, 
 						repeat : 0, 
 						duration : 750, 
 						alpha : { from : 1.0, to : 0.0 }, 
 						yoyo : false, 
 						onComplete : ( ) => {
 							this.__scene.scene.start (
-								this.__buttonTargetScene [ this.__i ]
+								this.__buttonTargetScene [ __i ], 
 							);
 						}
 					});
@@ -284,13 +284,13 @@
 
 			this.__stats.update ( );
 
-			for ( this.__i = 0; this.__i <= 2; this.__i++ ) {
+			for ( let __i = 0; __i <= 2; __i++ ) {
 
-				this.__button [ this.__i ].UpdateButton (
+				this.__button [ __i ].UpdateButton (
 
-					this.__button [ this.__i ].alpha, 
-					this.__fadeInMenu ( ).__buttonAlphaLevel [ this.__i ], 
-					this.__fadeInMenu ( ).__buttonAlphaDuration [ this.__i ]
+					this.__button [ __i ].alpha, 
+					this.__fadeInMenu ( ).__buttonAlphaLevel [ __i ], 
+					this.__fadeInMenu ( ).__buttonAlphaDuration [ __i ]
 
 				);
 

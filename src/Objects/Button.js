@@ -4,7 +4,7 @@
 
 	({
 
-		Extends : Phaser.Scene, 
+		Extends : Phaser.Image, 
 
 		initialize :
 
