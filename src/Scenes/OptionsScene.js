@@ -373,18 +373,6 @@
 
 			this.__btnObjects = [ ];
 
-			// Game
-
-			console.log ( this.__scene );
-			console.log ( this.add );
-			console.log ( this.__buttonX [ 0 ] );
-			console.log ( this.__buttonY [ 0 ] );
-			console.log ( this.__buttonKeys [ 0 ] );
-			console.log ( this.__buttonKeys [ 1 ] );
-			console.log ( this.__buttonText [ 0 ] );
-			console.log ( this.__buttonTargetScene [ 0 ] );
-			console.log ( this.__buttonLocked [ 0 ] );
-
 			this.__button [ 0 ] = this.CreateGameButton ({
 				scene : this.__scene, add : this.add, x : this.__buttonX [ 0 ], 
 				y : this.__buttonY [ 0 ], key1 : this.__buttonKeys [ 0 ], key2 : this.__buttonKeys [ 1 ], 
@@ -396,9 +384,13 @@
 
 			this.__btnObjects.push ( this.__button [ 0 ] );
 
+			console.log ( this.__btnObjects );
+
 			this.__btnObjects [ 0 ].button.on ( 'pointerdown', function ( ) {
 				this.__scene.tweens.add ({
-					targets : this.__btnObjects.flatMap ( ( b ) => [ b.button, b.__text ] ), 
+					targets : this.__btnObjects.flatMap ( ( b ) => [
+						b.button, b.__text, 
+					] ), 
 					repeat : 0, 
 					duration : 750, 
 					alpha : { from : 1.0, to : 0.0 }, 
