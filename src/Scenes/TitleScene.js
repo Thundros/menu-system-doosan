@@ -80,6 +80,23 @@
 
 		}, 
 
+		fadeButtons : function ( ) {
+
+			this.__scene.tweens.add ({
+				targets : this.__btnObjects, 
+				repeat : 0, 
+				duration : 750, 
+				alpha : 0, 
+				yoyo : false, 
+				onComplete : ( ) => {
+					this.__scene.scene.start (
+						this.__buttonTargetScene, 
+					);
+				}
+			});
+
+		}, 
+
 		CreateGameButton : function ( __objData ) {
 
 			this.__objData = __objData;
@@ -191,6 +208,8 @@
 
 			];
 
+			/*
+
 			this.__btnObjects = [ ];
 
 			for ( let __i = 0; __i <= 2; __i++ ) {
@@ -218,6 +237,42 @@
 				this.__btnObjects [ __i ].button.on ( 'pointerdown', function ( ) {
 					this.__scene.tweens.add ({
 						targets : this.__btnObjects, 
+						repeat : 0, 
+						duration : 750, 
+						alpha : { from : 1.0, to : 0.0 }, 
+						yoyo : false, 
+						onComplete : ( ) => {
+							this.__scene.scene.start (
+								this.__buttonTargetScene [ __i ], 
+							);
+						}
+					});
+				}.bind ( this ) );
+
+			}
+
+			*/
+
+			this.__btnObjects = [ ];
+
+			for ( let __i = 0; __i <= 2; __i++ ) {
+
+				// Game
+
+				this.__button [ __i ] = this.CreateGameButton ({
+					scene : this.__scene, add : this.add, x : this.__buttonX [ __i ], 
+					y : this.__buttonY [ __i ], key1 : this.__buttonKeys [ 0 ], key2 : this.__buttonKeys [ 1 ], 
+					text : this.__buttonText [ __i ], targetScene : this.__buttonTargetScene [ __i ], locked : this.__buttonLocked [ __i ]
+				});
+
+				this.__buttonFadeInAlphaLevel [ __i ] = this.__fadeInMenu ( ).__buttonAlphaLevel [ __i ];
+				this.__buttonFadeInAlphaDuration [ __i ] = this.__fadeInMenu ( ).__buttonAlphaDuration [ __i ];
+
+				this.__btnObjects.push ( this.__button [ __i ] );
+
+				this.__btnObjects [ __i ].button.on ( 'pointerdown', function ( ) {
+					this.__scene.tweens.add ({
+						targets : this.__btnObjects.flatMap ( ( b ) => [ b.button, b.__text ] ), 
 						repeat : 0, 
 						duration : 750, 
 						alpha : { from : 1.0, to : 0.0 }, 

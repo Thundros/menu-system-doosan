@@ -4,9 +4,9 @@
 
 	({
 
-		Extends : Phaser.Image, 
+		Extends : Phaser.Container, 
 
-		initialize :
+		initialize : 
 
 		function Button ( ) {
 
