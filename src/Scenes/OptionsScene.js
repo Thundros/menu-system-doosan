@@ -284,19 +284,6 @@
 				}
 			);
 
-			/*
-
-				this.add.rectangle ( this.__halfLeft, 0, 1, 2000, 0xffffff ).setOrigin ( 0, 0 );
-				this.add.rectangle ( this.__halfRight, 0, 1, 2000, 0xffffff ).setOrigin ( 0, 0 );
-
-				this.add.rectangle ( this.__arrowLeftX [ 0 ], this.__arrowLeftY [ 0 ], 150, 150, 0xff0000 ).setOrigin ( 0, 0 ); // where the left is now
-				this.add.rectangle ( this.__arrowRightX [ 0 ], this.__arrowRightY [ 0 ], 150, 150, 0xff0000 ).setOrigin ( 0, 0 ); // where the right is now
-
-				this.add.rectangle ( this.__halfLeft - 150 / 2, this.__arrowLeftY [ 0 ] - 250, 150, 150, 0x00ff00 ).setOrigin ( 0, 0 ); // where I think it should go
-				this.add.rectangle ( this.__halfRight - 150 / 2, this.__arrowRightY [ 0 ] - 250, 150, 150, 0x00ff00 ).setOrigin ( 0, 0 ); // where I think it should go
-
-			*/
-
 			this.__myArrowLeft = this.add.text (
 				( this.__arrowLeftX [ 0 ] ), 
 				( this.__arrowLeftY [ 0 ] ), 
@@ -332,6 +319,8 @@
 					fontSize : 24, 
 				}
 			);
+
+			this.__txtObjects = [ ];
 
 			this.__musicButton.setInteractive ( );
 			this.__soundButton.setInteractive ( );
@@ -372,6 +361,7 @@
 			];
 
 			this.__btnObjects = [ ];
+			this.__txtObjects = [ ];
 
 			this.__button [ 0 ] = this.CreateGameButton ({
 				scene : this.__scene, add : this.add, x : this.__buttonX [ 0 ], 
@@ -383,8 +373,7 @@
 			this.__buttonFadeInAlphaDuration [ 0 ] = this.__fadeInMenu ( ).__buttonAlphaDuration [ 0 ];
 
 			this.__btnObjects.push ( this.__button [ 0 ] );
-
-			console.log ( this.__btnObjects );
+			this.__txtObjects.push ( this.__text );
 
 			this.__btnObjects [ 0 ].button.on ( 'pointerdown', function ( ) {
 				this.__scene.tweens.add ({
