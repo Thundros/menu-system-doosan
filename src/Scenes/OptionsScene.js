@@ -41,6 +41,83 @@
 
 		}, 
 
+		__fadeInMenu : function ( ) {
+
+			this.__buttonTarget = [
+
+				this.gameButton, this.optionsButton, this.creditsButton, 
+
+			];
+
+			this.__buttonAlphaLevel = [
+
+				0.25, 0.50, 1.0, 
+
+			];
+
+			this.__buttonAlphaDuration = [
+
+				1000, 1000, 1000, 
+
+			];
+
+			return {
+
+				__buttonTargets : this.__buttonTarget, 
+				__buttonAlphaLevel : this.__buttonAlphaLevel, 
+				__buttonAlphaDuration : this.__buttonAlphaDuration, 
+
+			}
+
+		}, 
+
+		__fadeOutMenu : function ( ) {
+
+			this.__buttonTarget = [
+
+				this.gameButton, this.optionsButton, this.creditsButton, 
+
+			];
+
+			this.__buttonAlphaLevel = [
+
+				0.25, 0.50, 1.0, 
+
+			];
+
+			this.__buttonAlphaDuration = [
+
+				500, 1000, 2000, 
+
+			];
+
+			return {
+
+				__buttonTargets : this.__buttonTarget, 
+				__buttonAlphaLevel : this.__buttonAlphaLevel, 
+				__buttonAlphaDuration : this.__buttonAlphaDuration, 
+
+			}
+
+		}, 
+
+		fadeButtons : function ( ) {
+
+			this.__scene.tweens.add ({
+				targets : this.__btnObjects, 
+				repeat : 0, 
+				duration : 750, 
+				alpha : 0, 
+				yoyo : false, 
+				onComplete : ( ) => {
+					this.__scene.scene.start (
+						this.__buttonTargetScene, 
+					);
+				}
+			});
+
+		}, 
+
 		updateAudio : function ( ) {
 
 			if ( this.model.musicOn === false ) {
@@ -86,7 +163,17 @@
 
 			this.model = this.sys.game.globals.model;
 
-			this.__container = new Container ( );
+			this.__scene = this;
+
+			this.__button = [ ];
+
+			this.__buttonFadeInAlphaLevel = [ ];
+			this.__buttonFadeOutAlphaLevel = [ ];
+
+			this.__buttonFadeInAlphaDuration = [ ];
+			this.__buttonFadeOutAlphaDuration = [ ];
+
+			// this.__container = new Container ( );
 
 			this.__CONFIG_WIDTH = ( __config.width );
 			this.__CONFIG_HEIGHT = ( __config.height );
@@ -252,17 +339,77 @@
 			this.__myArrowLeft.setInteractive ( );
 			this.__myArrowRight.setInteractive ( );
 
-			this.__menuButton = this.CreateGameButton ({
-				scene : this, 
-				add : this.add, 
-				x : ( __config.width / 2 ), 
-				y : ( ( __config.height / 2 ) + ( 100 ) ), 
-				key1 : 'blueButton1', 
-				key2 : 'blueButton2', 
-				text : 'Main Menu', 
-				targetScene : 'TitleScene', 
-				locked : false, 
+			this.__buttonX = [
+				( __config.width / 2 ), 
+			];
+
+			this.__buttonY = [
+				( ( __config.height / 2 ) + ( 100 ) ), 
+			];
+
+			this.__buttonKeys = [
+
+				'blueButton1', 'blueButton2', 
+
+			];
+
+			this.__buttonText = [
+
+				'Main Menu', 
+
+			];
+
+			this.__buttonTargetScene = [
+
+				'TitleScene', 
+
+			];
+
+			this.__buttonLocked = [
+
+				false, false, false, 
+
+			];
+
+			this.__btnObjects = [ ];
+
+			// Game
+
+			console.log ( this.__scene );
+			console.log ( this.add );
+			console.log ( this.__buttonX [ 0 ] );
+			console.log ( this.__buttonY [ 0 ] );
+			console.log ( this.__buttonKeys [ 0 ] );
+			console.log ( this.__buttonKeys [ 1 ] );
+			console.log ( this.__buttonText [ 0 ] );
+			console.log ( this.__buttonTargetScene [ 0 ] );
+			console.log ( this.__buttonLocked [ 0 ] );
+
+			this.__button [ 0 ] = this.CreateGameButton ({
+				scene : this.__scene, add : this.add, x : this.__buttonX [ 0 ], 
+				y : this.__buttonY [ 0 ], key1 : this.__buttonKeys [ 0 ], key2 : this.__buttonKeys [ 1 ], 
+				text : this.__buttonText [ 0 ], targetScene : this.__buttonTargetScene [ 0 ], locked : this.__buttonLocked [ 0 ]
 			});
+
+			this.__buttonFadeInAlphaLevel [ 0 ] = this.__fadeInMenu ( ).__buttonAlphaLevel [ 0 ];
+			this.__buttonFadeInAlphaDuration [ 0 ] = this.__fadeInMenu ( ).__buttonAlphaDuration [ 0 ];
+
+			this.__btnObjects.push ( this.__button [ 0 ] );
+
+			this.__btnObjects [ 0 ].button.on ( 'pointerdown', function ( ) {
+				this.__scene.tweens.add ({
+					targets : this.__btnObjects.flatMap ( ( b ) => [ b.button, b.__text ] ), 
+					repeat : 0, 
+					duration : 750, 
+					alpha : { from : 1.0, to : 0.0 }, 
+					yoyo : false, 
+					onComplete : ( ) => {
+						this.__scene.scene.start (
+							this.__buttonTargetScene [ 0 ], 
+						);
+					}
+				});
+			}.bind ( this ) );
 
 			this.__musicButton.on ( 'pointerdown', function ( ) {
 				this.model.musicOn = ( ! ( this.model.musicOn ) );
