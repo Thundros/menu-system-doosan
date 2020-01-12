@@ -18,22 +18,7 @@
 
 		}, 
 
-		fadeButtons : function ( ) {
-
-			this.__scene.tweens.add ({
-				targets : this.__btnObjects, 
-				repeat : 0, 
-				duration : 750, 
-				alpha : 0, 
-				yoyo : false, 
-				onComplete : ( ) => {
-					this.__scene.scene.start (
-						this.__buttonTargetScene, 
-					);
-				}
-			});
-
-		}, 
+		// /*
 
 		__fadeInMenu : function ( ) {
 
@@ -224,7 +209,26 @@
 				this.__btnObjects.push ( this.__button [ __i ] );
 				console.log ( this.__button [ __i ] );
 
-				this.__btnObjects [ __i ].button.on ( 'pointerdown', this.fadeButtons, this );
+				this.tweens.add ({
+					targets : this.__btnObjects [ __i ], 
+					alpha : this.__buttonFadeInAlphaLevel [ __i ], 
+					duration : this.__buttonFadeInAlphaDuration [ __i ], 
+				});
+
+				this.__btnObjects [ __i ].button.on ( 'pointerdown', function ( ) {
+					this.__scene.tweens.add ({
+						targets : this.__btnObjects, 
+						repeat : 0, 
+						duration : 750, 
+						alpha : { from : 1.0, to : 0.0 }, 
+						yoyo : false, 
+						onComplete : ( ) => {
+							this.__scene.scene.start (
+								this.__buttonTargetScene [ __i ], 
+							);
+						}
+					});
+				}.bind ( this ) );
 
 			}
 
