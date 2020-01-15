@@ -377,9 +377,7 @@
 
 			this.__btnObjects [ 0 ].button.on ( 'pointerdown', function ( ) {
 				this.__scene.tweens.add ({
-					targets : this.__btnObjects.flatMap ( ( b ) => [
-						b.button, b.__text, 
-					] ), 
+					targets : this.children.getChildren ( ), 
 					repeat : 0, 
 					duration : 750, 
 					alpha : { from : 1.0, to : 0.0 }, 

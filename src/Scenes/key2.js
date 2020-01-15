@@ -41,6 +41,83 @@
 
 		}, 
 
+		__fadeInMenu : function ( ) {
+
+			this.__buttonTarget = [
+
+				this.gameButton, this.optionsButton, this.creditsButton, 
+
+			];
+
+			this.__buttonAlphaLevel = [
+
+				0.25, 0.50, 1.0, 
+
+			];
+
+			this.__buttonAlphaDuration = [
+
+				1000, 1000, 1000, 
+
+			];
+
+			return {
+
+				__buttonTargets : this.__buttonTarget, 
+				__buttonAlphaLevel : this.__buttonAlphaLevel, 
+				__buttonAlphaDuration : this.__buttonAlphaDuration, 
+
+			}
+
+		}, 
+
+		__fadeOutMenu : function ( ) {
+
+			this.__buttonTarget = [
+
+				this.gameButton, this.optionsButton, this.creditsButton, 
+
+			];
+
+			this.__buttonAlphaLevel = [
+
+				0.25, 0.50, 1.0, 
+
+			];
+
+			this.__buttonAlphaDuration = [
+
+				500, 1000, 2000, 
+
+			];
+
+			return {
+
+				__buttonTargets : this.__buttonTarget, 
+				__buttonAlphaLevel : this.__buttonAlphaLevel, 
+				__buttonAlphaDuration : this.__buttonAlphaDuration, 
+
+			}
+
+		}, 
+
+		fadeButtons : function ( ) {
+
+			this.__scene.tweens.add ({
+				targets : this.__btnObjects, 
+				repeat : 0, 
+				duration : 750, 
+				alpha : 0, 
+				yoyo : false, 
+				onComplete : ( ) => {
+					this.__scene.scene.start (
+						this.__buttonTargetScene, 
+					);
+				}
+			});
+
+		}, 
+
 		updateAudio : function ( ) {
 
 			if ( this.model.musicOn === false ) {
@@ -87,12 +164,32 @@
 
 
 		}, 
-		
+
 		create : function ( ) {
 
 			this.model = this.sys.game.globals.model;
 
-			this.__container = new Container ( );
+			// this.__container = new Container ( );
+
+			this.__scene = this;
+
+			this.__Option = [ ];
+
+			this.__optionText = [ ];
+
+			this.__btnObjects = [ ];
+			this.__txtObjects = [ ];
+
+			this.__button = [ ];
+
+			this.__buttonFadeInAlphaLevel = [ ];
+			this.__buttonFadeInAlphaDuration = [ ];
+
+			this.__buttonTargetScene = [
+
+				'TitleScene', 
+
+			];
 
 			this.__CONFIG_WIDTH = ( __config.width );
 			this.__CONFIG_HEIGHT = ( __config.height );
@@ -108,7 +205,7 @@
 
             // "150 is the size of the font, 50 is the offset"
             // "the font size is 150 i vaguely recall"
-            //this.add.rectangle((this.__CONFIG_WIDTH/2),0, 1, 2000, 0xffffff).setOrigin(0,0); // half the screen
+            //this.add.rectangle((this.__CONFIG_WIDTH/2), 0, 1, 2000, 0xffffff).setOrigin(0, 0); // half the screen
 
             this.__half = ( this.__CONFIG_WIDTH / 2 );
             this.__quarter = ( this.__half / 2 );
@@ -121,57 +218,44 @@
             this.add.rectangle ( ( this.__halfRight + ( 150 / 2 ) ), 0, 1, 2000, 0xffffff ).setOrigin ( 0, 0 ); // half the screen
 
 			this.__textArray = [
-				'<', '>', 'Options',
-				'Sound Enabled', 'Music Enabled', 
-				'Debug', 
+				'<', '>', 'Options', 
+				'Option 3', 'Option 4', 'Debug', 
 			];
 
-			this.__musicButtonX = [
+			this.__optionButtonX = [
+				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 48 ) ), 
 				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 48 ) ), 
 			];
 
-			this.__musicButtonY = [
-				( ( this.__CONFIG_HEIGHT ) - ( 385 ) ),
-			];
-
-			this.__soundButtonX = [
-				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 48 ) ),
-			];
-
-			this.__soundButtonY = [
-				( ( this.__CONFIG_HEIGHT ) - ( 455 ) ),
+			this.__optionButtonY = [
+				( ( this.__CONFIG_HEIGHT ) - ( 455 ) ), 
+				( ( this.__CONFIG_HEIGHT ) - ( 385 ) ), 
 			];
 
 			this.__optionTitleX = [
-				( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ),
+				( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ), 
 			];
 
 			this.__optionTitleY = [
-				( ( this.__CONFIG_HALF_HEIGHT ) - ( 200 ) ),
+				( ( this.__CONFIG_HALF_HEIGHT ) - ( 200 ) ), 
 			];
 
-			this.__musicLabelX = [
-				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 4 ) ),
+			this.__optionLabelX = [
+				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 4 ) ), 
+				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 4 ) ), 
 			];
 
-			this.__musicLabelY = [
-				( ( this.__CONFIG_HEIGHT ) - ( 390 ) ),
-			];
-
-			this.__soundLabelX = [
-				( ( ( this.__CONFIG_HALF_WIDTH ) - ( 150 / 2 ) ) - ( 4 ) ),
-			];
-
-			this.__soundLabelY = [
-				( ( this.__CONFIG_HEIGHT ) - ( 460 ) ),
+			this.__optionLabelY = [
+				( ( this.__CONFIG_HEIGHT ) - ( 460 ) ), 
+				( ( this.__CONFIG_HEIGHT ) - ( 390 ) ), 
 			];
 
 			this.__arrowLeftX = [
-				( ( ( this.__CONFIG_HALF_WIDTH / 2 ) - ( 150 / 2 ) ) - 5 ),
+				( ( ( this.__CONFIG_HALF_WIDTH / 2 ) - ( 150 / 2 ) ) - 5 ), 
 			];
 
 			this.__arrowLeftY = [
-				( ( this.__CONFIG_HALF_HEIGHT ) - ( 250 / 2 ) ),
+				( ( this.__CONFIG_HALF_HEIGHT ) - ( 250 / 2 ) ), 
 			];
 
 			this.__arrowRightX = [
@@ -179,27 +263,23 @@
 			];
 
 			this.__arrowRightY = [
-				( ( this.__CONFIG_HALF_HEIGHT ) - ( 250 / 2 ) ),
+				( ( this.__CONFIG_HALF_HEIGHT ) - ( 250 / 2 ) ), 
 			];
 
-			this.__musicButton = this.add.image (
-				this.__musicButtonX [ 0 ],
-				this.__musicButtonY [ 0 ],
-				'checkedBox'
-			);
-
-			this.__soundButton = this.add.image (
-				this.__soundButtonX [ 0 ],
-				this.__soundButtonY [ 0 ],
-				'checkedBox'
-			);
+			for ( this.__i = 0; this.__i <= 1; this.__i++ ) {
+				this.__Option [ this.__i ] = this.add.image (
+					this.__optionButtonX [ this.__i ], 
+					this.__optionButtonY [ this.__i ], 
+					'checkedBox'
+				);
+			}
 
 			this.__text = this.add.text (
-				( this.__optionTitleX [ 0 ] ),
-				( this.__optionTitleY [ 0 ] ),
-				this.__textArray [ 2 ],
+				( this.__optionTitleX [ 0 ] ), 
+				( this.__optionTitleY [ 0 ] ), 
+				this.__textArray [ 2 ], 
 				{
-					fontSize : 40,
+					fontSize : 40, 
 				}
 			);
 
@@ -234,51 +314,63 @@
 				}
 			);
 
-			this.__musicText = this.add.text (
-				( this.__musicLabelX [ 0 ] ), 
-				( this.__musicLabelY [ 0 ] ), 
-				'Option 6 Enabled', 
+			this.__optionText [ 0 ] = this.add.text (
+				( this.__optionLabelX [ 0 ] ), 
+				( this.__optionLabelY [ 0 ] ), 
+				this.__textArray [ 3 ], 
 				{
 					fontSize : 24, 
 				}
 			);
 
-			this.__soundText = this.add.text (
-				( this.__soundLabelX [ 0 ] ), 
-				( this.__soundLabelY [ 0 ] ), 
-				'Option 5 Enabled', 
+			this.__optionText [ 1 ] = this.add.text (
+				( this.__optionLabelX [ 1 ] ), 
+				( this.__optionLabelY [ 1 ] ), 
+				this.__textArray [ 4 ], 
 				{
 					fontSize : 24, 
 				}
 			);
 
-			this.__musicButton.setInteractive ( );
-			this.__soundButton.setInteractive ( );
+			this.__Option [ 0 ].setInteractive ( );
+			this.__Option [ 1 ].setInteractive ( );
 
 			this.__myArrowLeft.setInteractive ( );
 			this.__myArrowRight.setInteractive ( );
 
-
-			this.__menuButton = this.CreateGameButton ({
-				scene : this, 
-				add : this.add, 
-				x : ( __config.width / 2 ), 
-				y : ( ( __config.height / 2 ) + ( 100 ) ), 
-				key1 : 'blueButton1', 
-				key2 : 'blueButton2', 
-				text : 'Main Menu', 
-				targetScene : 'TitleScene', 
-				locked : false, 
+			this.__button [ 0 ] = this.CreateGameButton ({
+				scene : this, add : this.add, x : ( __config.width / 2 ), 
+				y : ( ( __config.height / 2 ) + ( 100 ) ), key1 : 'blueButton1', key2 : 'blueButton2', 
+				text : 'Main Menu', targetScene : 'TitleScene', locked : false, 
 			});
 
-			this.__musicButton.on ( 'pointerdown', function ( ) {
-				this.model.musicOn = ( ! ( this.model.musicOn ) );
-				this.updateAudio ( );
+			this.__buttonFadeInAlphaLevel [ 0 ] = this.__fadeInMenu ( ).__buttonAlphaLevel [ 0 ];
+			this.__buttonFadeInAlphaDuration [ 0 ] = this.__fadeInMenu ( ).__buttonAlphaDuration [ 0 ];
+
+			this.__btnObjects.push ( this.__button [ 0 ] );
+			this.__txtObjects.push ( this.__text );
+
+			this.__btnObjects [ 0 ].button.on ( 'pointerdown', function ( ) {
+				this.__scene.tweens.add ({
+					targets : this.children.getChildren ( ), 
+					repeat : 0, 
+					duration : 750, 
+					alpha : { from : 1.0, to : 0.0 }, 
+					yoyo : false, 
+					onComplete : ( ) => {
+						this.__scene.scene.start (
+							this.__buttonTargetScene [ 0 ], 
+						);
+					}
+				});
 			}.bind ( this ) );
 
-			this.__soundButton.on ( 'pointerdown', function ( ) {
-				this.model.soundOn = ( ! ( this.model.soundOn ) );
-				this.updateAudio ( );
+			this.__Option [ 0 ].on ( 'pointerdown', function ( ) {
+				console.log ( 'C' );
+			}.bind ( this ) );
+
+			this.__Option [ 1 ].on ( 'pointerdown', function ( ) {
+				console.log ( 'D' );
 			}.bind ( this ) );
 
 			this.__myArrowLeft.on ( 'pointerdown', function ( ) {
@@ -311,6 +403,21 @@
 				}
 			} );
 
+			this.__btnObjects [ 0 ].button.on ( 'pointerdown', function ( ) {
+				this.__scene.tweens.add ({
+					targets : this.children.getChildren ( ), 
+					repeat : 0, 
+					duration : 750, 
+					alpha : { from : 1.0, to : 0.0 }, 
+					yoyo : false, 
+					onComplete : ( ) => {
+						this.__scene.scene.start (
+							this.__buttonTargetScene [ 0 ], 
+						);
+					}
+				});
+			}.bind ( this ) );
+
 			/*
 
 				this.__container.create ({
@@ -329,7 +436,7 @@
 
 			*/
 
-			this.updateAudio ( );
+			// this.updateAudio ( );
 
 		}, 
 
