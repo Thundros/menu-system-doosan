@@ -118,18 +118,18 @@
 
 		}, 
 
-		__ActivateAction : function ( __options, __on ) {
+		__ActivateAction : function ( __options, __on3 ) {
 
 			this.__options = __options;
-			this.__on = __on;
+			this.__on3 = __on3;
 
 			console.log ( this.__options );
 
-			if ( this.__on === true ) { this.__options.setTexture ( 'box' ); }
-			if ( this.__on === false ) { this.__options.setTexture ( 'checkedBox' ); }
+			if ( this.__on3 === true ) { this.__options.setTexture ( 'checkedBox' ); }
+			if ( this.__on3 === false ) { this.__options.setTexture ( 'box' ); }
 
 			console.log ( this.__options );
-			console.log ( this.__on );
+			console.log ( this.__on3 );
 
 		}, 
 
@@ -326,7 +326,7 @@
 				this.__Option [ this.__i ] = this.add.image (
 					this.__optionButtonX [ this.__i ], 
 					this.__optionButtonY [ this.__i ], 
-					'checkedBox'
+					'box'
 				);
 			}
 
@@ -421,18 +421,18 @@
 				});
 			}.bind ( this ) );
 
-			this.__Option [ 0 ].on ( 'pointerdown', function ( ) {
+			this.__Option [ 0 ].on ( 'pointerup', function ( ) {
 				// this.__Option [ 0 ].setTexture ( 'checkedBox' );
 				// this.__Option [ 0 ].setTexture ( 'box' );
-				this.__on = ! this.__on;
-				this.__ActivateAction ( this.__Option [ 0 ], this.__on );
+				this.__on1 = ! this.__on1;
+				this.__ActivateAction ( this.__Option [ 0 ], this.__on1 );
 			}.bind ( this ) );
 
-			this.__Option [ 1 ].on ( 'pointerdown', function ( ) {
+			this.__Option [ 1 ].on ( 'pointerup', function ( ) {
 				// this.__Option [ 1 ].setTexture ( 'checkedBox' );
 				// this.__Option [ 1 ].setTexture ( 'box' );
-				this.__on = ! this.__on;
-				this.__ActivateAction ( this.__Option [ 1 ], this.__on );
+				this.__on2 = ! this.__on2;
+				this.__ActivateAction ( this.__Option [ 1 ], this.__on2 );
 			}.bind ( this ) );
 
 			this.__myArrowLeft.on ( 'pointerdown', function ( ) {

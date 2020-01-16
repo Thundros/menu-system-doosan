@@ -3,16 +3,16 @@
 
 	({
 
-		Extends : Phaser.Scene,
+		Extends : Phaser.Scene, 
 
 		initialize :
 
-		function key2 ( ) {
+		function key1 ( ) {
 
 			Phaser.Scene.call ( this, {
 
-				key : 'key2',
-				active : false,
+				key : 'key2', 
+				active : false, 
 
 			} );
 
@@ -118,11 +118,26 @@
 
 		}, 
 
+		__ActivateAction : function ( __options, __on3 ) {
+
+			this.__options = __options;
+			this.__on3 = __on3;
+
+			console.log ( this.__options );
+
+			if ( this.__on3 === true ) { this.__options.setTexture ( 'checkedBox' ); }
+			if ( this.__on3 === false ) { this.__options.setTexture ( 'box' ); }
+
+			console.log ( this.__options );
+			console.log ( this.__on3 );
+
+		}, 
+
 		updateAudio : function ( ) {
 
 			if ( this.model.musicOn === false ) {
 
-				this.__musicButton.setTexture ( 'box' );
+				this.__Option [ 1 ].setTexture ( 'box' );
 				this.sys.game.globals.sound.stop ( );
 				this.model.bgMusicPlaying = false;
 
@@ -132,7 +147,48 @@
 
 			{
 
-				this.__musicButton.setTexture ( 'checkedBox' );
+				this.__Option [ 1 ].setTexture ( 'checkedBox' );
+
+				if ( this.model.bgMusicPlaying === false ) {
+
+					this.sys.game.globals.sound.play ( );
+					this.model.bgMusicPlaying = true;
+
+				}
+
+			}
+
+			if ( this.model.soundOn === false ) {
+
+				this.__soundButton.setTexture ( 'box' );
+
+			}
+
+			else
+
+			{
+
+				this.__soundButton.setTexture ( 'checkedBox' );
+
+			}
+
+		}, 
+
+		updateAudio : function ( ) {
+
+			if ( this.model.musicOn === false ) {
+
+				this.__Option [ 1 ].setTexture ( 'box' );
+				this.sys.game.globals.sound.stop ( );
+				this.model.bgMusicPlaying = false;
+
+			}
+
+			else
+
+			{
+
+				this.__Option [ 1 ].setTexture ( 'checkedBox' );
 
 				if ( this.model.bgMusicPlaying === false ) {
 
@@ -164,7 +220,7 @@
 
 
 		}, 
-
+		
 		create : function ( ) {
 
 			this.model = this.sys.game.globals.model;
@@ -270,7 +326,7 @@
 				this.__Option [ this.__i ] = this.add.image (
 					this.__optionButtonX [ this.__i ], 
 					this.__optionButtonY [ this.__i ], 
-					'checkedBox'
+					'box'
 				);
 			}
 
@@ -365,12 +421,18 @@
 				});
 			}.bind ( this ) );
 
-			this.__Option [ 0 ].on ( 'pointerdown', function ( ) {
-				console.log ( 'C' );
+			this.__Option [ 0 ].on ( 'pointerup', function ( ) {
+				// this.__Option [ 0 ].setTexture ( 'checkedBox' );
+				// this.__Option [ 0 ].setTexture ( 'box' );
+				this.__on1 = ! this.__on1;
+				this.__ActivateAction ( this.__Option [ 0 ], this.__on1 );
 			}.bind ( this ) );
 
-			this.__Option [ 1 ].on ( 'pointerdown', function ( ) {
-				console.log ( 'D' );
+			this.__Option [ 1 ].on ( 'pointerup', function ( ) {
+				// this.__Option [ 1 ].setTexture ( 'checkedBox' );
+				// this.__Option [ 1 ].setTexture ( 'box' );
+				this.__on2 = ! this.__on2;
+				this.__ActivateAction ( this.__Option [ 1 ], this.__on2 );
 			}.bind ( this ) );
 
 			this.__myArrowLeft.on ( 'pointerdown', function ( ) {
