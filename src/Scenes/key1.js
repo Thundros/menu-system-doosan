@@ -174,25 +174,42 @@
 
 		}, 
 
-		updateOptions : function ( __opt ) {
+		updateOptions : function ( ) {
 
-			this.__option = __opt;
+			if ( this.model.musicOn === false ) {
 
-			if ( typeof ( this.__option ) === 'object' ) {
+				this.__musicButton.setTexture ( 'box' );
+				this.sys.game.globals.sound.stop ( );
+				this.model.bgMusicPlaying = false;
 
-				if ( this.model.optionOn === false ) {
+			}
 
-					this.__option.setTexture ( 'checkedBox' );
-					this.model.optionOn = false;
+			else
+
+			{
+
+				this.__musicButton.setTexture ( 'checkedBox' );
+
+				if ( this.model.bgMusicPlaying === false ) {
+
+					this.sys.game.globals.sound.play ( );
+					this.model.bgMusicPlaying = true;
 
 				}
 
-				else {
+			}
 
-					this.__option.setTexture ( 'box' );
-					this.model.optionOn = true;
+			if ( this.model.soundOn === false ) {
 
-				}
+				this.__soundButton.setTexture ( 'box' );
+
+			}
+
+			else
+
+			{
+
+				this.__soundButton.setTexture ( 'checkedBox' );
 
 			}
 
@@ -410,7 +427,7 @@
 				// this.__on1 = ! this.__on1;
 				// this.__ActivateAction ( this.__Option [ 0 ], this.__on1 );
 				this.model.optionOn = ( ! ( this.model.optionOn ) );
-				this.updateOptions ( this.__Option [ 0 ] );
+				this.updateOptions ( );
 			}.bind ( this ) );
 
 			this.__Option [ 1 ].on ( 'pointerdown', function ( ) {
@@ -419,7 +436,7 @@
 				// this.__on2 = ! this.__on2;
 				// this.__ActivateAction ( this.__Option [ 1 ], this.__on2 );
 				this.model.optionOn = ( ! ( this.model.optionOn ) );
-				this.updateOptions ( this.__Option [ 1 ] );
+				this.updateOptions ( );
 			}.bind ( this ) );
 
 			this.__myArrowLeft.on ( 'pointerdown', function ( ) {
