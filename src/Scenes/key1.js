@@ -181,7 +181,7 @@
 			if ( this.model.optionOn === false ) {
 
 				this.__opt.setTexture ( 'box' );
-				this.model.optionOn = true;
+				this.model.optionOn = false;
 
 			}
 
@@ -190,7 +190,7 @@
 			{
 
 				this.__opt.setTexture ( 'checkedBox' );
-				this.model.optionOn = false;
+				this.model.optionOn = true;
 
 			}
 
@@ -402,7 +402,7 @@
 				});
 			}.bind ( this ) );
 
-			this.__Option [ 0 ].on ( 'pointerup', function ( ) {
+			this.__Option [ 0 ].on ( 'pointerdown', function ( ) {
 				// this.__Option [ 0 ].setTexture ( 'checkedBox' );
 				// this.__Option [ 0 ].setTexture ( 'box' );
 				// this.__on1 = ! this.__on1;
