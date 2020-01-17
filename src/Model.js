@@ -5,11 +5,9 @@
 
 			this._soundOn = true;
 			this._musicOn = true;
+			this._optionOn = true;
+
 			this._bgMusicPlaying = false;
-
-			// HACK!!!
-
-			this._optionOn = false;
 
 		}
 
