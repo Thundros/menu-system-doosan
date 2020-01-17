@@ -223,9 +223,7 @@
 			this.__buttonFadeInAlphaDuration = [ ];
 
 			this.__buttonTargetScene = [
-
 				'TitleScene', 
-
 			];
 
 			this.__CONFIG_WIDTH = ( __config.width );
