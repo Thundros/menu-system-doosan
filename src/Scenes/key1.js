@@ -185,14 +185,14 @@
 
 			}
 
-			else
-
-			{
+			if ( this.model.optionOn === true ) {
 
 				this.__opt.setTexture ( 'checkedBox' );
 				this.model.optionOn = true;
 
 			}
+
+			console.log ( this.model.optionOn );
 
 		}, 
 
