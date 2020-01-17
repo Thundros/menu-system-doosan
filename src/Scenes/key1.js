@@ -408,7 +408,7 @@
 				// this.__on1 = ! this.__on1;
 				// this.__ActivateAction ( this.__Option [ 0 ], this.__on1 );
 				this.model.optionOn = ( ! ( this.model.optionOn ) );
-				this.updateOptions ( );
+				this.updateOptions ( this.__Option [ 0 ] );
 			}.bind ( this ) );
 
 			this.__Option [ 1 ].on ( 'pointerdown', function ( ) {
@@ -417,7 +417,7 @@
 				// this.__on2 = ! this.__on2;
 				// this.__ActivateAction ( this.__Option [ 1 ], this.__on2 );
 				this.model.optionOn = ( ! ( this.model.optionOn ) );
-				this.updateOptions ( );
+				this.updateOptions ( this.__Option [ 1 ] );
 			}.bind ( this ) );
 
 			this.__myArrowLeft.on ( 'pointerdown', function ( ) {
