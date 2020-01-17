@@ -5,7 +5,7 @@
 
 			this._soundOn = true;
 			this._musicOn = true;
-			this._optionOn = true;
+			this._optionOn = false;
 
 			this._bgMusicPlaying = false;
 
