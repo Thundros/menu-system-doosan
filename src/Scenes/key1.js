@@ -174,34 +174,14 @@
 
 		}, 
 
-		updateOptions : function ( ) {
+		updateOptions : function ( __opt ) {
 
-			if ( this.model.musicOn === false ) {
+			this.__opt = __opt;
 
-				this.__musicButton.setTexture ( 'box' );
-				this.sys.game.globals.sound.stop ( );
-				this.model.bgMusicPlaying = false;
+			if ( this.model.optionOn === false ) {
 
-			}
-
-			else
-
-			{
-
-				this.__musicButton.setTexture ( 'checkedBox' );
-
-				if ( this.model.bgMusicPlaying === false ) {
-
-					this.sys.game.globals.sound.play ( );
-					this.model.bgMusicPlaying = true;
-
-				}
-
-			}
-
-			if ( this.model.soundOn === false ) {
-
-				this.__soundButton.setTexture ( 'box' );
+				this.__opt.setTexture ( 'box' );
+				this.model.optionOn = true;
 
 			}
 
@@ -209,7 +189,8 @@
 
 			{
 
-				this.__soundButton.setTexture ( 'checkedBox' );
+				this.__opt.setTexture ( 'checkedBox' );
+				this.model.optionOn = false;
 
 			}
 
