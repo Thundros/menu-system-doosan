@@ -182,14 +182,14 @@
 
 				if ( this.model.optionOn === false ) {
 
-					this.__option.setTexture ( 'box' );
+					this.__option.setTexture ( 'checkedBox' );
 					this.model.optionOn = false;
 
 				}
 
 				else {
 
-					this.__option.setTexture ( 'checkedBox' );
+					this.__option.setTexture ( 'box' );
 					this.model.optionOn = true;
 
 				}
