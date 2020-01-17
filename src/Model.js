@@ -7,6 +7,10 @@
 			this._musicOn = true;
 			this._bgMusicPlaying = false;
 
+			// HACK!!!
+
+			this._optionOn = false;
+
 		}
 
 		set musicOn ( value ) {
@@ -42,6 +46,18 @@
 		get bgMusicPlaying ( ) {
 
 			return this._bgMusicPlaying;
+
+		}
+
+		set optionOn ( value ) {
+
+			this._optionOn = value;
+
+		}
+
+		get optionOn ( ) {
+
+			return this._optionOn;
 
 		}
 

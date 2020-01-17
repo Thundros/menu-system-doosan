@@ -174,42 +174,25 @@
 
 		}, 
 
-		updateAudio : function ( ) {
+		updateOptions : function ( __opt ) {
 
-			if ( this.model.musicOn === false ) {
+			this.__option = __opt;
 
-				this.__Option [ 1 ].setTexture ( 'box' );
-				this.sys.game.globals.sound.stop ( );
-				this.model.bgMusicPlaying = false;
+			if ( typeof ( this.__option ) === 'object' ) {
 
-			}
+				if ( this.model.optionOn === false ) {
 
-			else
-
-			{
-
-				this.__Option [ 1 ].setTexture ( 'checkedBox' );
-
-				if ( this.model.bgMusicPlaying === false ) {
-
-					this.sys.game.globals.sound.play ( );
-					this.model.bgMusicPlaying = true;
+					this.__option.setTexture ( 'box' );
+					this.model.optionOn = false;
 
 				}
 
-			}
+				else {
 
-			if ( this.model.soundOn === false ) {
+					this.__option.setTexture ( 'checkedBox' );
+					this.model.optionOn = true;
 
-				this.__soundButton.setTexture ( 'box' );
-
-			}
-
-			else
-
-			{
-
-				this.__soundButton.setTexture ( 'checkedBox' );
+				}
 
 			}
 
@@ -424,15 +407,19 @@
 			this.__Option [ 0 ].on ( 'pointerup', function ( ) {
 				// this.__Option [ 0 ].setTexture ( 'checkedBox' );
 				// this.__Option [ 0 ].setTexture ( 'box' );
-				this.__on1 = ! this.__on1;
-				this.__ActivateAction ( this.__Option [ 0 ], this.__on1 );
+				// this.__on1 = ! this.__on1;
+				// this.__ActivateAction ( this.__Option [ 0 ], this.__on1 );
+				this.model.optionOn = ( ! ( this.model.optionOn ) );
+				this.updateOptions ( this.__Option [ 0 ] );
 			}.bind ( this ) );
 
-			this.__Option [ 1 ].on ( 'pointerup', function ( ) {
+			this.__Option [ 1 ].on ( 'pointerdown', function ( ) {
 				// this.__Option [ 1 ].setTexture ( 'checkedBox' );
 				// this.__Option [ 1 ].setTexture ( 'box' );
-				this.__on2 = ! this.__on2;
-				this.__ActivateAction ( this.__Option [ 1 ], this.__on2 );
+				// this.__on2 = ! this.__on2;
+				// this.__ActivateAction ( this.__Option [ 1 ], this.__on2 );
+				this.model.optionOn = ( ! ( this.model.optionOn ) );
+				this.updateOptions ( this.__Option [ 1 ] );
 			}.bind ( this ) );
 
 			this.__myArrowLeft.on ( 'pointerdown', function ( ) {
