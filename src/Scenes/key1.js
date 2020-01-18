@@ -174,25 +174,22 @@
 
 		}, 
 
-		updateOptions : function ( __opt ) {
+		updateOptions : function ( __page ) {
 
-			this.__opt = __opt;
+			this.__page = __page;
 
-			if ( this.model.optionOn === false ) {
-
-				this.__opt.setTexture ( 'box' );
-				this.model.optionOn = false;
-
+			if ( this.model.options [ this.__page * 2 ].value ) {
+				this.__Option [ 0 ].setTexture ( 'box' );
 			}
-
-			if ( this.model.optionOn === true ) {
-
-				this.__opt.setTexture ( 'checkedBox' );
-				this.model.optionOn = true;
-
+			else {
+				this.__Option [ 0 ].setTexture ( 'checkedBox' );
 			}
-
-			console.log ( this.model.optionOn );
+			if ( this.model.options [ this.__page * 2 + 1 ].value ) {
+				this.__Option [ 1 ].setTexture ( 'box' );
+			}
+			else {
+				this.__Option [ 1 ].setTexture ( 'checkedBox' );
+			}
 
 		}, 
 
@@ -406,7 +403,7 @@
 				// this.__on1 = ! this.__on1;
 				// this.__ActivateAction ( this.__Option [ 0 ], this.__on1 );
 				this.model.optionOn = ( ! ( this.model.optionOn ) );
-				this.updateOptions ( this.__Option [ 0 ] );
+				this.updateOptions ( __OPTIONS_CURR_PAGE_COUNT );
 			}.bind ( this ) );
 
 			this.__Option [ 1 ].on ( 'pointerdown', function ( ) {
@@ -415,7 +412,7 @@
 				// this.__on2 = ! this.__on2;
 				// this.__ActivateAction ( this.__Option [ 1 ], this.__on2 );
 				this.model.optionOn = ( ! ( this.model.optionOn ) );
-				this.updateOptions ( this.__Option [ 1 ] );
+				this.updateOptions ( __OPTIONS_CURR_PAGE_COUNT );
 			}.bind ( this ) );
 
 			this.__myArrowLeft.on ( 'pointerdown', function ( ) {
